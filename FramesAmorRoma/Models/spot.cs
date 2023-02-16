@@ -20,6 +20,7 @@ namespace FramesAmorRoma.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name ="Location") ]
         public string locationName { get; set; }
 
         [StringLength(1000)]
@@ -27,7 +28,9 @@ namespace FramesAmorRoma.Models
 
         [Required]
         [StringLength(200)]
+        [Display(Name ="Address") ]
         public string Locationaddress { get; set; }
+        
 
         public string spotIMG { get; set; }
 

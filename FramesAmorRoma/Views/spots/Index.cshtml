@@ -1,69 +1,79 @@
 ﻿@model IEnumerable<FramesAmorRoma.Models.spot>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Best Rome Spots for Stunning Photos";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+
+
+
+
+<p class="d-flex justify-content-center mt-5">
+    @Html.ActionLink("Create a New Package", "Create", null, new { @class = "btn btn-outline-success d-3 text-decoration-none" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.locationName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.describtion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Locationaddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.spotIMG)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.spot1img)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.spot2img)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.spot3img)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.locationName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.describtion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Locationaddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.spotIMG)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.spot1img)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.spot2img)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.spot3img)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDspot }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDspot }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDspot })
-        </td>
-    </tr>
-}
 
-</table>
+<div class="d-flex flex-column flex-md-row g-3 justify-content-center align-content-center me-auto ms-auto">
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="card card-package m-3 pt-3 shadow border-0 " style="width: 18rem;">
+            <div class="card-body text-center d-flex flex-column justify-content-between ">
+                <h6 class="card-subtitle text-muted text-uppercase">@Html.DisplayNameFor(model => model.locationName)</h6>
+                <h2 class=" card-title m-3 text-uppercase">@Html.DisplayFor(modelItem => item.locationName)</h2>
+                <p class="card-text">@Html.DisplayNameFor(model => model.Locationaddress) @Html.DisplayFor(modelItem => item.Locationaddress)</p>
+                
+                <div class="carousel slide carousel-fade px-0 mx-0 " data-bs-ride="carousel">
+                    <a href='<%:@Html.ActionLink("Details", "Details", new { id = item.IDspot }, new { @class = "btn link-info text-decoration-none" })%>'>
+                        <div class="carousel-inner ">
+                            <div class="carousel-item active" data-bs-interval="400">
+
+
+                                <img src="~/Content/img/spots/@item.spotIMG" style="width: 150px; height: 200px; object-fit: cover; object-position: center" class="d-block w-100 rounded-bottom" alt="profile Picture">
+
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+
+                                <img src="~/Content/img/spots/@item.spot1img" style="width:150px;height:200px; object-fit:cover; object-position:center" class="d-block w-100 rounded-bottom" alt="profile Picture">
+
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <img src="~/Content/img/spots/@item.spot2img" style="width: 150px; height: 200px; object-fit: cover; object-position: center" class="d-block w-100 rounded-bottom" alt="profile Picture">
+
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <img src="~/Content/img/spots/@item.spot3img" style="width: 150px; height: 200px; object-fit: cover; object-position: center" class="d-block w-100 rounded-bottom" alt="profile Picture">
+
+                            </div>
+
+                        </div>
+                    </a>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDspot }, new { @class = "btn link-info text-decoration-none" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IDspot }, new { @class = "btn link-info text-decoration-none" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IDspot }, new { @class = "btn link-danger text-decoration-none" })
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -217,7 +217,6 @@
     <Content Include="Views\spots\Index.cshtml" />
     <Content Include="Views\packages\Create.cshtml" />
     <Content Include="Views\packages\Delete.cshtml" />
-    <Content Include="Views\packages\Details.cshtml" />
     <Content Include="Views\packages\Edit.cshtml" />
     <Content Include="Views\packages\Index.cshtml" />
   </ItemGroup>
