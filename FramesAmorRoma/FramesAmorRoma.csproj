@@ -128,6 +128,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\packagesController.cs" />
+    <Compile Include="Controllers\portfoliosController.cs" />
     <Compile Include="Controllers\spotsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -219,6 +220,11 @@
     <Content Include="Views\packages\Delete.cshtml" />
     <Content Include="Views\packages\Edit.cshtml" />
     <Content Include="Views\packages\Index.cshtml" />
+    <Content Include="Views\portfolios\Create.cshtml" />
+    <Content Include="Views\portfolios\Delete.cshtml" />
+    <Content Include="Views\portfolios\Details.cshtml" />
+    <Content Include="Views\portfolios\Edit.cshtml" />
+    <Content Include="Views\portfolios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

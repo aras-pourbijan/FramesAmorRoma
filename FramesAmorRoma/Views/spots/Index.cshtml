@@ -10,7 +10,7 @@
 
 
 <p class="d-flex justify-content-center mt-5">
-    @Html.ActionLink("Create a New Package", "Create", null, new { @class = "btn btn-outline-success d-3 text-decoration-none" })
+    @Html.ActionLink("Add A New Spot", "Create", null, new { @class = "btn btn-outline-success d-3 text-decoration-none" })
 </p>
 
 
@@ -27,7 +27,7 @@
                 <p class="card-text">@Html.DisplayNameFor(model => model.Locationaddress) @Html.DisplayFor(modelItem => item.Locationaddress)</p>
                 
                 <div class="carousel slide carousel-fade px-0 mx-0 " data-bs-ride="carousel">
-                    <a href='<%:@Html.ActionLink("Details", "Details", new { id = item.IDspot }, new { @class = "btn link-info text-decoration-none" })%>'>
+                    
                         <div class="carousel-inner ">
                             <div class="carousel-item active" data-bs-interval="400">
 
@@ -50,8 +50,8 @@
                             </div>
 
                         </div>
-                    </a>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IDspot }, new { @class = "btn link-info text-decoration-none" }) |
+                   
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDspot }, new { @class = "btn link-success text-decoration-none" }) |
                     @Html.ActionLink("Details", "Details", new { id = item.IDspot }, new { @class = "btn link-info text-decoration-none" }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.IDspot }, new { @class = "btn link-danger text-decoration-none" })
                 </div>
