@@ -1,0 +1,168 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
+using FramesAmorRoma.Models;
+
+namespace FramesAmorRoma.Controllers
+{
+    public class UsersController : Controller
+    {
+        private ModelDBcontext db = new ModelDBcontext();
+
+        // GET: Users
+
+        public ActionResult login()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult login(User U)
+        {
+            if (ModelState.IsValid && db.Users.Where(x => x.UserName == U.UserName && x.psw == U.psw).Count() == 1)
+            {
+                FormsAuthentication.SetAuthCookie(U.UserName, true);
+                return Redirect(FormsAuthentication.DefaultUrl);
+            }
+            else
+            {
+                ViewBag.loginerr = "Try again! username or password in incorrect!";
+            }
+
+            return View(U);
+        } 
+
+        public ActionResult logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("index","Home");
+        }
+        public ActionResult Managment()
+        { 
+            return View();
+        }
+
+
+        public ActionResult Index()
+        {
+            return View(db.Users.ToList());
+        }
+
+        // GET: Users/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // GET: Users/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Users/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "UserName,email,psw,tel")] User user)
+        {
+            if (ModelState.IsValid)
+            {   
+                db.Users.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(user);
+        }
+
+        // GET: Users/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // POST: Users/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "UserName,IDuser,email,psw,FirstName,LastName,imgURL,Website,instagram,tel,experience,aboutME")] User user, HttpPostedFileBase profileIMG)
+        {
+            if (ModelState.IsValid)
+            {
+
+             
+                string filename = profileIMG.FileName;
+                string path = Server.MapPath("/content/img/profiles/"+ filename);
+                profileIMG.SaveAs(path);
+                user.imgURL= filename;
+
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
+
+        // GET: Users/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // POST: Users/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            User user = db.Users.Find(id);
+            db.Users.Remove(user);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

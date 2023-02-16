@@ -1,0 +1,69 @@
+﻿@model IEnumerable<FramesAmorRoma.Models.spot>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.locationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.describtion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Locationaddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.spotIMG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.spot1img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.spot2img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.spot3img)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.locationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.describtion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Locationaddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.spotIMG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.spot1img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.spot2img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.spot3img)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDspot }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDspot }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDspot })
+        </td>
+    </tr>
+}
+
+</table>

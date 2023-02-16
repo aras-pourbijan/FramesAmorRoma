@@ -1,0 +1,46 @@
+﻿@model FramesAmorRoma.Models.spot
+
+@{
+    ViewBag.Title = "Details";
+
+
+
+
+    <div>
+        <h4>Details</h4>
+        <hr />
+        <div class="row justify-content-between">
+
+            <div class="col-12 col-md-4">
+
+                <h1>@Html.DisplayFor(model => model.locationName)</h1>
+                <p class="d-none d-md-block">
+                    @Html.DisplayFor(model => model.describtion)
+                </p>
+            </div>
+
+            <div class="col row col-md-8 d-flex align-items-center">
+                <img src="~/Content/img/spots/@Model.spotIMG" style="width:auto;height:60vh; object-fit:cover; object-position:center" class="img-thumbnail ms-auto me-auto col " alt="location">
+                <img src="~/Content/img/spots/@Model.spot1img" style="width: auto; height: 60vh; object-fit: cover; object-position: center " class="img-thumbnail ms-auto col me-auto d-none d-md-flex " alt="location">
+
+                <img src="~/Content/img/spots/@Model.spot2img" style="width: auto; height: 60vh; object-fit: cover; object-position: center " class="img-thumbnail ms-auto col me-auto d-none d-md-flex" alt="location">
+                <img src="~/Content/img/spots/@Model.spot3img" style="width: auto; height: 60vh; object-fit: cover; object-position: center " class="img-thumbnail ms-auto col me-auto d-none d-md-flex" alt="location">
+
+            </div>
+            <p class=" d-md-none">
+                @Html.DisplayFor(model => model.describtion)
+            </p>
+
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.IDspot }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+
+    </div>
+
+
+
+}
+
+

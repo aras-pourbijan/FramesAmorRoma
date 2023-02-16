@@ -1,0 +1,80 @@
+﻿@model FramesAmorRoma.Models.spot
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>spot</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.locationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.locationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.describtion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.describtion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Locationaddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Locationaddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.spotIMG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.spotIMG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.spot1img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.spot1img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.spot2img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.spot2img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.spot3img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.spot3img)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

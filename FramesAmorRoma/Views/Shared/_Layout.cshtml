@@ -6,27 +6,69 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,100&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+<body class="pt-0">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Fourth navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Frames Amor</a>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link active text-decoration-none" })
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            @Html.ActionLink("Managment", "Managment", "users", null, new { @class = "nav-link active text-decoration-none" })
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            @Html.ActionLink("Managment", "Managment", "users", null, new { @class = "nav-link disabled text-decoration-none" })
+                        </li>
+                    }
                 </ul>
+                <div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="d-flex  align-items-center">
+                            <img src="https://picsum.photos/50" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <div class="text-white text-uppercase">@User.Identity.Name</div>
+                            <div>
+                                <i>@Html.ActionLink("Logout", "logout", "users", null, new { @class = "bi bi-box-arrow-in-left text-decoration-none text-light mx-5 btn btn-sm btn-outline-danger me-5" })</i>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+
+                        <div>
+                            <i>@Html.ActionLink("LOGIN", "login", "users", null, new { @class = "bi bi-box-arrow-in-right text-decoration-none text-white btn btn-sm btn-outline-success me-5" })</i>
+                        </div>
+
+                    }
+                </div>
+
             </div>
+
         </div>
-    </div>
+    </nav>
+
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -34,9 +76,10 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery")
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

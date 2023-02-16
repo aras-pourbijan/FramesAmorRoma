@@ -1,0 +1,88 @@
+﻿@model FramesAmorRoma.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <div class="row container">
+        <div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-lg-start mt-3 ">
+            <h2 class="">@Html.DisplayFor(model => model.FirstName)   @Html.DisplayFor(model => model.LastName)</h2>
+
+            <dl >
+                <dt>
+                    @Html.DisplayNameFor(model => model.email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Website)
+                </dt>
+
+                <dd>
+                    <a href=@Model.Website target="_blank" class="link-info text-decoration-none">@Model.Website</a>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.instagram)
+                </dt>
+
+                <dd>
+                    <a href=@Model.instagram target="_blank" class="link-info text-decoration-none">@Model.instagram</a>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tel)
+                </dt>
+
+                <dd class="btn btn-success">
+                    <a class="text-white text-decoration-none" href="tel:@Model.tel">@Model.tel</a>
+                </dd>
+
+
+            </dl>
+           
+        </div>
+        <div class="col-12 row col-md-8 d-flex flex-column flex-cs-column-reverse  flex-lg-row justify-content-center  p-3  ms-auto me-auto">
+            
+            <div class="col-10 col-md-4 text-center">
+                <img src="~/Content/img/profiles/@Model.imgURL" style="width:100%;height:auto; object-fit:cover; object-position:center" class="mt-4 ms-auto me-auto rounded rounded-3  shadow shadow-lg" alt="profile Picture">
+                <h6 class="text-secondary">
+                    @Html.DisplayFor(model => model.experience)
+                    @Html.DisplayNameFor(model => model.experience)
+                </h6>
+            </div>
+            
+            <div class="col-12 col-md-8  d-flex flex-column justify-content-end">
+                <h3> @Html.DisplayNameFor(model => model.aboutME)</h3>
+                <p> @Html.DisplayFor(model => model.aboutME)</p>
+            </div>
+            
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+   
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDuser }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

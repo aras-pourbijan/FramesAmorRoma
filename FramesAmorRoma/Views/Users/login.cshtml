@@ -1,0 +1,54 @@
+﻿@model FramesAmorRoma.Models.User
+
+@{
+    ViewBag.Title = "login";
+}
+
+<h2>login</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>User</h4>
+    @if (ViewBag.loginerr != null)
+    {
+        <div class="alert alert-danger w-75 m-auto m-5"> @ViewBag.loginerr</div>
+    }
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group ">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2 text-uppercase text-nowrap" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.psw, htmlAttributes: new { @class = "control-label col-md-2 text-uppercase ext-nowrap" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.psw, new { htmlAttributes = new { @class = "form-control", Type = "password" } })
+            @Html.ValidationMessageFor(model => model.psw, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="login" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
