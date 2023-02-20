@@ -63,6 +63,9 @@
                 <h3> @Html.DisplayNameFor(model => model.aboutME)</h3>
                 <p> @Html.DisplayFor(model => model.aboutME)</p>
             </div>
+            <div class="col-12">
+                @Html.ActionLink("create a new portfolio", "create","portfolios",null, new { id = Model.IDuser }) |
+            </div>
             
 
         </div>

@@ -55,6 +55,7 @@ namespace FramesAmorRoma.Controllers
             if (ModelState.IsValid)
             {
 
+
                 if (Cover != null) { 
                     string filenameCover = Cover.FileName;
                     string pathcover = Server.MapPath("/content/img/portfolio/" + filenameCover);
@@ -66,7 +67,7 @@ namespace FramesAmorRoma.Controllers
                 {
                     string filename1 = IMG1.FileName;
                     string path1 = Server.MapPath("/content/img/portfolio/" + filename1);
-                    Cover.SaveAs(path1);
+                    IMG1.SaveAs(path1);
                     portfolio.img1 = filename1;
                 }
 
@@ -74,7 +75,7 @@ namespace FramesAmorRoma.Controllers
                 {
                     string filename2 = IMG2.FileName;
                     string path2 = Server.MapPath("/content/img/portfolio/" + filename2);
-                    Cover.SaveAs(path2);
+                    IMG2.SaveAs(path2);
                     portfolio.img2 = filename2;
                 }
 
@@ -82,7 +83,7 @@ namespace FramesAmorRoma.Controllers
                 {
                     string filename3 = IMG3.FileName;
                     string path3 = Server.MapPath("/content/img/portfolio/" + filename3);
-                    Cover.SaveAs(path3);
+                    IMG3.SaveAs(path3);
                     portfolio.img3 = filename3;
                 }
 
@@ -90,14 +91,14 @@ namespace FramesAmorRoma.Controllers
                 {
                     string filename4 = IMG4.FileName;
                     string path4 = Server.MapPath("/content/img/portfolio/" + filename4);
-                    Cover.SaveAs(path4);
+                    IMG4.SaveAs(path4);
                     portfolio.img4 = filename4;
                 }
                 if (IMG5 != null)
                 {
                     string filename5 = IMG5.FileName;
                     string path5 = Server.MapPath("/content/img/portfolio/" + filename5);
-                    Cover.SaveAs(path5);
+                    IMG5.SaveAs(path5);
                     portfolio.img5 = filename5;
                 }
 
@@ -105,7 +106,7 @@ namespace FramesAmorRoma.Controllers
                 {
                     string filename6 = IMG6.FileName;
                     string path6 = Server.MapPath("/content/img/portfolio/" + filename6);
-                    Cover.SaveAs(path6);
+                    IMG6.SaveAs(path6);
                     portfolio.img6 = filename6;
                 }
 
@@ -113,7 +114,7 @@ namespace FramesAmorRoma.Controllers
                 {
                     string filename7 = IMG7.FileName;
                     string path7 = Server.MapPath("/content/img/portfolio/" + filename7);
-                    Cover.SaveAs(path7);
+                    IMG7.SaveAs(path7);
                     portfolio.img7 = filename7;
                 }
 
@@ -121,7 +122,7 @@ namespace FramesAmorRoma.Controllers
                 {
                     string filename8 = IMG8.FileName;
                     string path8 = Server.MapPath("/content/img/portfolio/" + filename8);
-                    Cover.SaveAs(path8);
+                    IMG8.SaveAs(path8);
                     portfolio.img8 = filename8;
                 }
 
@@ -129,11 +130,13 @@ namespace FramesAmorRoma.Controllers
                 {
                     string filename9 = IMG9.FileName;
                     string path9 = Server.MapPath("/content/img/portfolio/" + filename9);
-                    Cover.SaveAs(path9);
+                    IMG9.SaveAs(path9);
                     portfolio.img9 = filename9;
                 }
 
+                User u = db.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
 
+                portfolio.IDuser = u.IDuser;
                 db.portfolios.Add(portfolio);
                 db.SaveChanges();
                 return RedirectToAction("Index");
