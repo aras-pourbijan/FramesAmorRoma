@@ -116,14 +116,37 @@ namespace FramesAmorRoma.Controllers
         {
             if (ModelState.IsValid)
             {
+                User UserNew = db.Users.Find(user.IDuser);
 
-             
-                string filename = profileIMG.FileName;
-                string path = Server.MapPath("/content/img/profiles/"+ filename);
-                profileIMG.SaveAs(path);
-                user.imgURL= filename;
+                if (profileIMG != null) { 
+                    string filename = profileIMG.FileName;
+                    string path = Server.MapPath("/content/img/profiles/"+ filename);
+                    profileIMG.SaveAs(path);
+                    user.imgURL= filename;
+                }
+                else
+                {
+                    User u = db.Users.Find(user.IDuser);
+                    user.imgURL = u.imgURL;
+                }
 
-                db.Entry(user).State = EntityState.Modified;
+                UserNew.imgURL = user.imgURL;
+                UserNew.UserName= user.UserName;
+                UserNew.email= user.email;
+                UserNew.psw = user.psw; 
+                UserNew.FirstName=user.FirstName;
+                UserNew.LastName=user.LastName;
+                UserNew.Website= user.Website;  
+                UserNew.instagram= user.instagram;
+                UserNew.tel= user.tel;
+                UserNew.experience= user.experience;
+                UserNew.aboutME= user.aboutME;
+
+
+                
+               
+
+                db.Entry(UserNew).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

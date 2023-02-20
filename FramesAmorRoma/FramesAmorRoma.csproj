@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\bookingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\packagesController.cs" />
     <Compile Include="Controllers\portfoliosController.cs" />
@@ -169,6 +170,7 @@
     <Content Include="Content\img\template\2G7A6905-Edit.jpg" />
     <Content Include="Content\img\template\2G7A7014.jpg" />
     <Content Include="Content\img\template\2G7A8008.jpg" />
+    <Content Include="Content\img\template\addlocation.jpg" />
     <Content Include="Content\img\template\homepage.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -225,9 +227,15 @@
     <Content Include="Views\portfolios\Details.cshtml" />
     <Content Include="Views\portfolios\Edit.cshtml" />
     <Content Include="Views\portfolios\Index.cshtml" />
+    <Content Include="Views\bookings\Create.cshtml" />
+    <Content Include="Views\bookings\Delete.cshtml" />
+    <Content Include="Views\bookings\Details.cshtml" />
+    <Content Include="Views\bookings\Edit.cshtml" />
+    <Content Include="Views\bookings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\portfolio\" />
     <Folder Include="Content\img\profiles\" />
     <Folder Include="Content\img\spots\" />
   </ItemGroup>

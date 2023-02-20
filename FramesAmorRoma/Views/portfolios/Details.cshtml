@@ -4,11 +4,24 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>portfolio</h4>
-    <hr />
+
+<div class="row mt-5">
+    <div class="col col-md-3">
+        <h4>The @Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName) portfolios</h4>
+        <hr />
+        <p>@Html.DisplayFor(model => model.User.aboutME)</p>
+
+    </div>
+    <div class="col col-md-9">
+
+    </div>
+   
+
+
+
+
+</div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.User.UserName)
@@ -99,7 +112,8 @@
         </dd>
 
     </dl>
-</div>
+
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.IDportfolio }) |
     @Html.ActionLink("Back to List", "Index")

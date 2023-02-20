@@ -15,35 +15,13 @@
             @Html.DisplayNameFor(model => model.User.UserName)
         </th>
         <th>
+            Photographer
+        </th>
+        <th>
+
             @Html.DisplayNameFor(model => model.coverIMG)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img4)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img5)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img6)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img7)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img8)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.img9)
-        </th>
+
         <th></th>
     </tr>
 
@@ -53,39 +31,17 @@
             @Html.DisplayFor(modelItem => item.User.UserName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.coverIMG)
+            @Html.DisplayFor(modelItem => item.User.FirstName)
+            @Html.DisplayFor(modelItem => item.User.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.img1)
+            <img src="~/Content/img/portfolio/@item.coverIMG" style="width:60px;height:60px; object-fit:cover; object-position:center" class=" ms-auto me-auto rounded-circle" alt="profile Picture">
+
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.img2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.img3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.img4)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.img5)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.img6)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.img7)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.img8)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.img9)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDportfolio }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDportfolio }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDportfolio })
+            @Html.ActionLink("Edit", "Edit", new { id = item.IDportfolio }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IDportfolio }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IDportfolio })
         </td>
     </tr>
 }

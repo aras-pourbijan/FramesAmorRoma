@@ -7,7 +7,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "spots", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -44,7 +44,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.spotIMG, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.spotIMG, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBox("spotJPG", "", htmlAttributes: new { @class = "form-control", @type = "file" })
                 @Html.ValidationMessageFor(model => model.spotIMG, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,7 +52,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.spot1img, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.spot1img, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBox("IMG1", "", htmlAttributes: new { @class = "form-control", @type = "file" })
                 @Html.ValidationMessageFor(model => model.spot1img, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -60,7 +60,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.spot2img, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.spot2img, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBox("IMG2", "", htmlAttributes: new { @class = "form-control", @type = "file" })
                 @Html.ValidationMessageFor(model => model.spot2img, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -68,7 +68,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.spot3img, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.spot3img, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBox("IMG3", "", htmlAttributes: new { @class = "form-control", @type = "file" })
                 @Html.ValidationMessageFor(model => model.spot3img, "", new { @class = "text-danger" })
             </div>
         </div>

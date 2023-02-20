@@ -54,56 +54,84 @@ namespace FramesAmorRoma.Controllers
         {
             if (ModelState.IsValid)
             {
-                string filenameCover = Cover.FileName;
-                string pathcover = Server.MapPath("/content/img/portfoglio/"+portfolio.IDuser+"/" + filenameCover);
-                Cover.SaveAs(pathcover);
-                portfolio.coverIMG=filenameCover;
 
-                string filename1 = IMG1.FileName;
-                string path1 = Server.MapPath("/content/img/portfoglio/" + portfolio.IDuser + "/" + filename1);
-                Cover.SaveAs(path1);
-                portfolio.img1 = filename1;
+                if (Cover != null) { 
+                    string filenameCover = Cover.FileName;
+                    string pathcover = Server.MapPath("/content/img/portfolio/" + filenameCover);
+                    Cover.SaveAs(pathcover);
+                    portfolio.coverIMG=filenameCover;
+                }
 
-                string filename2 = IMG2.FileName;
-                string path2 = Server.MapPath("/content/img/portfoglio/" + portfolio.IDuser + "/" + filename2);
-                Cover.SaveAs(path2);
-                portfolio.img2 = filename2;
+                if (IMG1 != null)
+                {
+                    string filename1 = IMG1.FileName;
+                    string path1 = Server.MapPath("/content/img/portfolio/" + filename1);
+                    Cover.SaveAs(path1);
+                    portfolio.img1 = filename1;
+                }
 
-                string filename3 = IMG3.FileName;
-                string path3 = Server.MapPath("/content/img/portfoglio/" + portfolio.IDuser + "/" + filename3);
-                Cover.SaveAs(path3);
-                portfolio.img3 = filename3;
+                if (IMG2 != null)
+                {
+                    string filename2 = IMG2.FileName;
+                    string path2 = Server.MapPath("/content/img/portfolio/" + filename2);
+                    Cover.SaveAs(path2);
+                    portfolio.img2 = filename2;
+                }
 
-                string filename4 = IMG4.FileName;
-                string path4 = Server.MapPath("/content/img/portfoglio/" + portfolio.IDuser + "/" + filename4);
-                Cover.SaveAs(path4);
-                portfolio.img4 = filename4;
+                if(IMG3 != null)
+                {
+                    string filename3 = IMG3.FileName;
+                    string path3 = Server.MapPath("/content/img/portfolio/" + filename3);
+                    Cover.SaveAs(path3);
+                    portfolio.img3 = filename3;
+                }
 
-                string filename5 = IMG5.FileName;
-                string path5 = Server.MapPath("/content/img/portfoglio/" + portfolio.IDuser + "/" + filename5);
-                Cover.SaveAs(path5);
-                portfolio.img5 = filename5;
+                if(IMG4!= null)
+                {
+                    string filename4 = IMG4.FileName;
+                    string path4 = Server.MapPath("/content/img/portfolio/" + filename4);
+                    Cover.SaveAs(path4);
+                    portfolio.img4 = filename4;
+                }
+                if (IMG5 != null)
+                {
+                    string filename5 = IMG5.FileName;
+                    string path5 = Server.MapPath("/content/img/portfolio/" + filename5);
+                    Cover.SaveAs(path5);
+                    portfolio.img5 = filename5;
+                }
 
-                string filename6 = IMG6.FileName;
-                string path6 = Server.MapPath("/content/img/portfoglio/" + portfolio.IDuser + "/" + filename6);
-                Cover.SaveAs(path6);
-                portfolio.img6 = filename6;
+                if (IMG6 != null)
+                {
+                    string filename6 = IMG6.FileName;
+                    string path6 = Server.MapPath("/content/img/portfolio/" + filename6);
+                    Cover.SaveAs(path6);
+                    portfolio.img6 = filename6;
+                }
 
-                string filename7 = IMG7.FileName;
-                string path7 = Server.MapPath("/content/img/portfoglio/" + portfolio.IDuser + "/" + filename7);
-                Cover.SaveAs(path7);
-                portfolio.img7 = filename7;
+                if (IMG7 != null)
+                {
+                    string filename7 = IMG7.FileName;
+                    string path7 = Server.MapPath("/content/img/portfolio/" + filename7);
+                    Cover.SaveAs(path7);
+                    portfolio.img7 = filename7;
+                }
 
-                string filename8 = IMG8.FileName;
-                string path8 = Server.MapPath("/content/img/portfoglio/" + portfolio.IDuser + "/" + filename8);
-                Cover.SaveAs(path8);
-                portfolio.img8 = filename8;
+                if (IMG8 != null)
+                {
+                    string filename8 = IMG8.FileName;
+                    string path8 = Server.MapPath("/content/img/portfolio/" + filename8);
+                    Cover.SaveAs(path8);
+                    portfolio.img8 = filename8;
+                }
 
-                string filename9 = IMG9.FileName;
-                string path9 = Server.MapPath("/content/img/portfoglio/" + portfolio.IDuser + "/" + filename9);
-                Cover.SaveAs(path9);
-                portfolio.img9 = filename9;
-
+                if(IMG9!= null)
+                {
+                    string filename9 = IMG9.FileName;
+                    string path9 = Server.MapPath("/content/img/portfolio/" + filename9);
+                    Cover.SaveAs(path9);
+                    portfolio.img9 = filename9;
+                }
 
 
                 db.portfolios.Add(portfolio);

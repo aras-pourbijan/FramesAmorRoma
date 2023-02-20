@@ -72,7 +72,6 @@ namespace FramesAmorRoma.Controllers
 
 
 
-
                 db.spots.Add(spot);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -101,11 +100,73 @@ namespace FramesAmorRoma.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDspot,locationName,describtion,Locationaddress,spotIMG,spot1img,spot2img,spot3img")] spot spot)
+        public ActionResult Edit([Bind(Include = "IDspot,locationName,describtion,Locationaddress,spotIMG,spot1img,spot2img,spot3img")] spot spot, HttpPostedFileBase spotJPG,
+            HttpPostedFileBase IMG1,HttpPostedFileBase IMG2, HttpPostedFileBase IMG3)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(spot).State = EntityState.Modified;
+                spot newSpot = db.spots.Find(spot.IDspot);
+                if (spotJPG != null)
+                {
+                    string filename = spotJPG.FileName;
+                    string path = Server.MapPath("/content/img/spots/" + filename);
+                    spotJPG.SaveAs(path);
+                    spot.spotIMG= filename;
+                }
+                else
+                {   spot s = db.spots.Find(spot.IDspot);
+                    spot.spotIMG = s.spotIMG;
+                }
+
+                if (IMG1 != null)
+                {
+                    string filename1 = IMG1.FileName;
+                    string path1 = Server.MapPath("/content/img/spots/" + filename1);
+                    IMG1.SaveAs(path1);
+                    spot.spot1img = filename1;
+                }
+                else
+                {
+                    spot s1 = db.spots.Find(spot.IDspot);
+                    spot.spot1img = s1.spot1img;
+                }
+
+                if (IMG2 != null)
+                {
+                    string filename2 = IMG2.FileName;
+                    string path2 = Server.MapPath("/content/img/spots/" + filename2);
+                    IMG2.SaveAs(path2);
+                    spot.spot2img = filename2;
+                }
+                else
+                {
+                    spot s2 = db.spots.Find(spot.IDspot);
+                    spot.spot2img = s2.spot2img;
+                }
+
+                if (IMG3 != null)
+                {
+                    string filename3 = IMG3.FileName;
+                    string path3 = Server.MapPath("/content/img/spots/" + filename3);
+                    IMG3.SaveAs(path3);
+                    spot.spot3img = filename3;
+                }
+                else
+                {
+                    spot s3 = db.spots.Find(spot.IDspot);
+                    spot.spot3img = s3.spot3img;
+                }
+
+                newSpot.locationName= spot.locationName;
+                newSpot.describtion= spot.describtion;
+                newSpot.Locationaddress= spot.Locationaddress;
+                newSpot.spotIMG= spot.spotIMG;
+                newSpot.spot1img= spot.spot1img;    
+                newSpot.spot2img= spot.spot2img;
+                newSpot.spot3img = spot.spot3img;
+
+
+                db.Entry(newSpot).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
