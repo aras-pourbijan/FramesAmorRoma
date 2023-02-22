@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-hover w-75 me-auto ms-auto">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.package.PackageName)
@@ -18,25 +18,13 @@
             @Html.DisplayNameFor(model => model.spot.locationName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.bookTime)
+           Photographer
         </th>
         <th>
             @Html.DisplayNameFor(model => model.daterequest)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.prefertHour)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.clientName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.clientEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.clientTel)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NumOfPersons)
@@ -53,25 +41,14 @@
             @Html.DisplayFor(modelItem => item.spot.locationName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.bookTime)
+            @Html.DisplayFor(modelItem => item.User.FirstName)
+            @Html.DisplayFor(modelItem => item.User.LastName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.daterequest)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.prefertHour)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.clientName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.clientEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.clientTel)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NumOfPersons)

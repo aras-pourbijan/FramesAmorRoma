@@ -15,11 +15,13 @@ namespace FramesAmorRoma.Models
         public int IDuser { get; set; }
 
         public int IDspot { get; set; }
+       
+        public  DateTime  bookTime { get; set; }
 
-        public DateTime? bookTime { get; set; }
 
         [Column(TypeName = "date")]
         [Display(Name = "Date Requested")]
+
         public DateTime daterequest { get; set; }
         
         [Display(Name = "Hour Preferences")]

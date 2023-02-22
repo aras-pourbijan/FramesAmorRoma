@@ -9,13 +9,13 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.User.UserName)
         </th>
         <th>
-            Photographer
+            Photographer Name
         </th>
         <th>
 
@@ -30,7 +30,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.User.UserName)
         </td>
-        <td>
+        <td class="text-uppercase">
             @Html.DisplayFor(modelItem => item.User.FirstName)
             @Html.DisplayFor(modelItem => item.User.LastName)
         </td>

@@ -50,7 +50,7 @@
            
         </div>
         <div class="col-12 row col-md-8 d-flex flex-column flex-cs-column-reverse  flex-lg-row justify-content-center  p-3  ms-auto me-auto">
-            
+
             <div class="col-10 col-md-4 text-center">
                 <img src="~/Content/img/profiles/@Model.imgURL" style="width:100%;height:auto; object-fit:cover; object-position:center" class="mt-4 ms-auto me-auto rounded rounded-3  shadow shadow-lg" alt="profile Picture">
                 <h6 class="text-secondary">
@@ -58,24 +58,17 @@
                     @Html.DisplayNameFor(model => model.experience)
                 </h6>
             </div>
-            
+
             <div class="col-12 col-md-8  d-flex flex-column justify-content-end">
                 <h3> @Html.DisplayNameFor(model => model.aboutME)</h3>
                 <p> @Html.DisplayFor(model => model.aboutME)</p>
             </div>
-            <div class="col-12">
-                @Html.ActionLink("create a new portfolio", "create","portfolios",null, new { id = Model.IDuser }) |
-            </div>
             
+            <div class="btn btn-warning me-auto ms-auto w-75 mt-5 border border-1">
+                @Html.ActionLink("create a new portfolio", "CreateByID", "portfolios", new { id = Model.IDuser, @class = "nav-link active text-decoration-none" }, null)
+            </div>
 
         </div>
-
-
-
-
-
-
-
 
     </div>
 

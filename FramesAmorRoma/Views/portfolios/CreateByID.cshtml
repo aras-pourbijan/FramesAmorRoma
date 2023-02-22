@@ -1,0 +1,107 @@
+﻿@model FramesAmorRoma.Models.portfolio
+
+@{
+    ViewBag.Title = "CreateByID";
+}
+
+<h2>CreateByID</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>portfolio</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group col-12">
+            @Html.LabelFor(model => model.coverIMG, htmlAttributes: new { @class = "control-label col-md-2 text-nowrap " })
+            <div class="col-md-10">
+                @Html.TextBox("Cover", "", htmlAttributes: new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(model => model.coverIMG, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-12  mt-2">
+
+            <input type="submit" value="Public Your Portfolio" class="btn btn-outline-success" />
+
+        </div>
+    </div>
+    <div class="form-group col-12  col-lg-9 row">
+        <div class="form-group col-6 col-md-4">
+            @Html.LabelFor(model => model.img1, htmlAttributes: new { @class = "control-label col-md-2 text-nowrap " })
+            <div class="col-md-10">
+                @Html.TextBox("IMG1", "", htmlAttributes: new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(model => model.img1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-6 col-md-4">
+            @Html.LabelFor(model => model.img2, htmlAttributes: new { @class = "control-label col-md-2 text-nowrap " })
+            <div class="col-md-10">
+                @Html.TextBox("IMG2", "", htmlAttributes: new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(model => model.img2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-6 col-md-4">
+            @Html.LabelFor(model => model.img3, htmlAttributes: new { @class = "control-label col-md-2 text-nowrap " })
+            <div class="col-md-10">
+                @Html.TextBox("IMG3", "", htmlAttributes: new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(model => model.img3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-6 col-md-4">
+            @Html.LabelFor(model => model.img4, htmlAttributes: new { @class = "control-label col-md-2 text-nowrap " })
+            <div class="col-md-10">
+                @Html.TextBox("IMG4", "", htmlAttributes: new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(model => model.img4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-6 col-md-4">
+            @Html.LabelFor(model => model.img5, htmlAttributes: new { @class = "control-label col-md-2 text-nowrap " })
+            <div class="col-md-10">
+                @Html.TextBox("IMG5", "", htmlAttributes: new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(model => model.img5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-6 col-md-4">
+            @Html.LabelFor(model => model.img6, htmlAttributes: new { @class = "control-label col-md-2 text-nowrap " })
+            <div class="col-md-10">
+                @Html.TextBox("IMG6", "", htmlAttributes: new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(model => model.img6, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-6 col-md-4">
+            @Html.LabelFor(model => model.img7, htmlAttributes: new { @class = "control-label col-md-2 text-nowrap " })
+            <div class="col-md-10">
+                @Html.TextBox("IMG7", "", htmlAttributes: new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(model => model.img7, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-6 col-md-4">
+            @Html.LabelFor(model => model.img8, htmlAttributes: new { @class = "control-label col-md-2 text-nowrap " })
+            <div class="col-md-10">
+                @Html.TextBox("IMG8", "", htmlAttributes: new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(model => model.img8, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-6 col-md-4">
+            @Html.LabelFor(model => model.img9, htmlAttributes: new { @class = "control-label col-md-2 text-nowrap" })
+            <div class="col-md-10">
+                @Html.TextBox("IMG9", "", htmlAttributes: new { @class = "form-control", @type = "file" })
+                @Html.ValidationMessageFor(model => model.img9, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -20,7 +20,7 @@
         <hr />
         <p>@Html.DisplayFor(model => model.User.aboutME)</p>
         <div class="d-flex flex-column align-content-center ">
-            <div class="btn btn-success my-1">
+            <div class="btn btn-success my-1 me-auto ms-auto w-75">
                 <a class="text-white text-decoration-none " href="tel:@Model.User.tel">@Model.User.tel</a>
             </div>
 
@@ -30,6 +30,10 @@
                 <a class="fw-bold text-decoration-none text-dark" style="font-size:2rem" href="@Model.User.instagram"><i class="bi bi-instagram" data-toggle="tooltip" data-placement="top" title="Instagram Page"></i></a>
                 <a class="fw-bold text-decoration-none text-dark" style="font-size:2rem" href="mailto:@Model.User.email"><i class="bi bi-envelope-at" data-toggle="tooltip" data-placement="top" title="email"></i></a>
 
+            </div>
+
+            <div class="btn btn-warning me-auto ms-auto w-75 mt-5 border border-1">
+                @Html.ActionLink("Book Your Photoshoot Now!", "CreateByID", "bookings", new { id = Model.IDuser, @class = "nav-link active text-decoration-none" },null)
             </div>
         </div>
 

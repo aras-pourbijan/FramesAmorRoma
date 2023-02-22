@@ -54,7 +54,7 @@ namespace FramesAmorRoma.Controllers
         {
             if (ModelState.IsValid)
             {
-                booking.bookTime= DateTime.Now; 
+                booking.bookTime= DateTime.Now.Date; 
 
                 db.bookings.Add(booking);
                 db.SaveChanges();
@@ -65,6 +65,44 @@ namespace FramesAmorRoma.Controllers
             ViewBag.IDspot = new SelectList(db.spots, "IDspot", "locationName", booking.IDspot);
             ViewBag.IDuser = new SelectList(db.Users, "IDuser", "UserName", booking.IDuser);
             return View(booking);
+        }
+
+
+
+        public ActionResult CreateByID(int ID)
+        {
+            ViewBag.IDpackage = new SelectList(db.packages, "IDpackage", "PackageName");
+            ViewBag.IDspot = new SelectList(db.spots, "IDspot", "locationName");
+            ViewBag.IDuser = new SelectList(db.Users, "IDuser", "UserName");
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult CreateByID([Bind(Include = "IDbook,IDuser,IDspot,daterequest,prefertHour,IDpackage,clientName,clientEmail,clientTel,NumOfPersons")] booking booking,int ID)
+        {
+            if (ModelState.IsValid)
+            {
+                booking.IDuser = ID;
+                booking.bookTime = DateTime.Now.Date;
+
+                db.bookings.Add(booking);
+                db.SaveChanges();
+                return RedirectToAction("BookDone");
+            }
+
+            ViewBag.IDpackage = new SelectList(db.packages, "IDpackage", "PackageName", booking.IDpackage);
+            ViewBag.IDspot = new SelectList(db.spots, "IDspot", "locationName", booking.IDspot);
+            ViewBag.IDuser = new SelectList(db.Users, "IDuser", "UserName", booking.IDuser);
+            return View(booking);
+        }
+
+
+
+        public ActionResult BookDone()
+        {
+            
+            return View();
         }
 
         // GET: bookings/Edit/5
