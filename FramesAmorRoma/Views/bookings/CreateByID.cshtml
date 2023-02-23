@@ -4,7 +4,7 @@
     ViewBag.Title = "CreateByID";
 }
 
-<h2>CreateByID</h2>
+<h2>Make your booking</h2>
 
 
 @using (Html.BeginForm()) 
@@ -15,13 +15,7 @@
         <h4>booking</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.IDuser, "IDuser", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IDuser", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IDuser, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+      
 
         <div class="form-group">
             @Html.LabelFor(model => model.IDspot, "IDspot", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -30,14 +24,6 @@
                 @Html.ValidationMessageFor(model => model.IDspot, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.bookTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.bookTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.bookTime, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.daterequest, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -50,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.prefertHour, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.prefertHour, new { htmlAttributes = new { @class = "form-control", Type = "time" } })
+                @Html.EditorFor(model => model.prefertHour, new { htmlAttributes = new { @class = "form-control", Type = "time"} })
                 @Html.ValidationMessageFor(model => model.prefertHour, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -97,7 +83,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Send Request" class="btn btn-default" />
             </div>
         </div>
     </div>

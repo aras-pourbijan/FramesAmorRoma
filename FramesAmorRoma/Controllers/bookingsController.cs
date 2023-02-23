@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using FramesAmorRoma.Models;
@@ -11,10 +12,12 @@ using FramesAmorRoma.Models;
 namespace FramesAmorRoma.Controllers
 {
     public class bookingsController : Controller
+        
     {
         private ModelDBcontext db = new ModelDBcontext();
 
         // GET: bookings
+        [Authorize(Users = "admin")]
         public ActionResult Index()
         {
             var bookings = db.bookings.Include(b => b.package).Include(b => b.spot).Include(b => b.User);
@@ -83,11 +86,29 @@ namespace FramesAmorRoma.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 booking.IDuser = ID;
                 booking.bookTime = DateTime.Now.Date;
 
                 db.bookings.Add(booking);
                 db.SaveChanges();
+
+                MailAddress Sender = new MailAddress(booking.clientEmail);
+                MailAddress Reciver = new MailAddress("framesamor@virgilio.it");
+
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.Subject = "your request for photoshoot with Frames Amor ";
+                mailMessage.Body = "hrhrhrhrh";
+                mailMessage.From = Reciver;
+                mailMessage.To.Add(Reciver);
+
+                SmtpClient client= new SmtpClient("out.virgilio.it");
+                client.Host = "out.virgilio.it";
+                client.Port = 465;
+                
+                client.Credentials = new NetworkCredential("framesamor@virgilio.it", "1234Admin@");
+                client.Send(mailMessage);
+
                 return RedirectToAction("BookDone");
             }
 
@@ -98,17 +119,19 @@ namespace FramesAmorRoma.Controllers
         }
 
 
-
+        
         public ActionResult BookDone()
         {
             
             return View();
         }
 
+
+        [Authorize(Users = "admin")]
         // GET: bookings/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (id == null) 
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -128,6 +151,7 @@ namespace FramesAmorRoma.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Users = "admin")]
         public ActionResult Edit([Bind(Include = "IDbook,IDuser,IDspot,bookTime,daterequest,prefertHour,IDpackage,clientName,clientEmail,clientTel,NumOfPersons")] booking booking)
         {
             if (ModelState.IsValid)
@@ -143,6 +167,7 @@ namespace FramesAmorRoma.Controllers
         }
 
         // GET: bookings/Delete/5
+        [Authorize(Users = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -159,6 +184,7 @@ namespace FramesAmorRoma.Controllers
 
         // POST: bookings/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Users = "admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

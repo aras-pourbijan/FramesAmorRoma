@@ -16,6 +16,7 @@ namespace FramesAmorRoma.Models
         }
 
         [Key]
+        [Display(Name = "choose your favorite location")]
         public int IDspot { get; set; }
 
         [Required]

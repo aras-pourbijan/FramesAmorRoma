@@ -171,7 +171,9 @@
     <Content Include="Content\img\template\2G7A7014.jpg" />
     <Content Include="Content\img\template\2G7A8008.jpg" />
     <Content Include="Content\img\template\addlocation.jpg" />
+    <Content Include="Content\img\template\amor-frames-low-resolution-logo-white-on-transparent-background.png" />
     <Content Include="Content\img\template\homepage.jpg" />
+    <Content Include="Content\img\template\roma.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -236,6 +238,7 @@
     <Content Include="Views\bookings\BookDone.cshtml" />
     <Content Include="Views\portfolios\CreateByID.cshtml" />
     <Content Include="Views\portfolios\PortfolioGallary.cshtml" />
+    <Content Include="Views\Users\UserHomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

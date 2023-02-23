@@ -10,6 +10,7 @@ using FramesAmorRoma.Models;
 
 namespace FramesAmorRoma.Controllers
 {
+    [Authorize]
     public class portfoliosController : Controller
     {
         private ModelDBcontext db = new ModelDBcontext();
@@ -20,6 +21,7 @@ namespace FramesAmorRoma.Controllers
             var portfolios = db.portfolios.Include(p => p.User);
             return View(portfolios.ToList());
         }
+        [AllowAnonymous]
 
         public ActionResult PortfolioGallary()
         {
@@ -31,7 +33,7 @@ namespace FramesAmorRoma.Controllers
 
 
 
-
+        [AllowAnonymous]
 
         // GET: portfolios/Details/5
         public ActionResult Details(int? id)
@@ -49,6 +51,7 @@ namespace FramesAmorRoma.Controllers
         }
 
         // GET: portfolios/Create
+        [Authorize(Users = "admin")]
         public ActionResult Create()
         {
             ViewBag.IDuser = new SelectList(db.Users, "IDuser", "UserName");

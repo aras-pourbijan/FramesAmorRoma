@@ -16,6 +16,7 @@ namespace FramesAmorRoma.Models
         }
 
         [Key]
+        [Display(Name = "desired package")]
         public int IDpackage { get; set; }
 
         [Required]

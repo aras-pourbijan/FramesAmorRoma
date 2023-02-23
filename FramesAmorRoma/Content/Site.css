@@ -1,6 +1,13 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: oldlace;
+    color: #242423;
+    font-family: 'Roboto', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -38,7 +45,76 @@ textarea {
     zoom:1.2;
 }
 
+.bg-dark {
+    background-color: #1E2328 !important;
+}
+.nav-link {
+    color: #E8EDDF;
+}
+.nav-item:hover {
+    color: #F5CB5C;
+}
 
-.test{
-    background-color:red
+.portfolio-cover:hover{
+    zoom:1.1;
+}
+
+
+.go2Gallary {
+    -webkit-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.34);
+    box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.25);
+}
+
+.card {
+    overflow: hidden;
+}
+
+.cardGallary {
+    filter: brightness(0.6);
+}
+    .cardGallary:hover {
+        filter: brightness(1.1);
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.7s;
+        object-fit: contain;
+        transform: scale(1.15);
+    }
+
+    .profilePhotographer {
+    filter: grayscale(100%);
+    width:50px;
+    height:50px;
+    object-fit:cover
+    }
+
+
+.btn-outline-light:hover{
+
+    background-color:#fed053;
+    transition-timing-function:ease-in-out;
+    transition-duration:0.4s;
+}
+
+.homeIMG{
+    height:50vh;
+    width:100%;
+    object-fit:cover;
+    position:center
+}
+
+.homeCards{
+
+}
+
+.btn-login{
+    background-color:#3b3f46;
+    color:white;
+    padding-inline :50px;
+    margin:5px;
+}
+
+.btn-login:hover {
+    background-color:#F5CB5C;
+    color:black;
+    font-weight:700
 }

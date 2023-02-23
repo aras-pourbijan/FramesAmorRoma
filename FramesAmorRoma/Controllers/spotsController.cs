@@ -10,6 +10,7 @@ using FramesAmorRoma.Models;
 
 namespace FramesAmorRoma.Controllers
 {
+    [Authorize(Users = "admin")]
     public class spotsController : Controller
     {
         private ModelDBcontext db = new ModelDBcontext();

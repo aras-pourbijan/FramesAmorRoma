@@ -14,40 +14,43 @@ namespace FramesAmorRoma.Models
 
         public int IDuser { get; set; }
 
+        [Display(Name = "choose your favorite location")]
         public int IDspot { get; set; }
        
         public  DateTime  bookTime { get; set; }
 
 
         [Column(TypeName = "date")]
-        [Display(Name = "Date Requested")]
+        [Display(Name = "select a date")]
 
         public DateTime daterequest { get; set; }
         
-        [Display(Name = "Hour Preferences")]
+        [Display(Name = "your preferred time")]
         [DataType(DataType.Time)]
         public DateTime prefertHour { get; set; }
 
-        [Display(Name = "Choose Your Package")]
+        [Display(Name = "choose one of the packages")]
         public int IDpackage { get; set; }
 
         [Required]
         [StringLength(200)]
-        [Display(Name = "Client full Name")]
+        [Display(Name = "Your Name")]
         public string clientName { get; set; }
 
         [Required]
         [StringLength(300)]
-        [Display(Name = "client Email")]
+        [Display(Name = "Your Email")]
         public string clientEmail { get; set; }
 
         [Required]
         [StringLength(20)]
-        [Display(Name = "client contact number")]
+        [Display(Name = "your mobile number")]
         public string clientTel { get; set; }
 
-        [Display(Name = "Number of persons for shooting ")]
+        [Display(Name = "how many people are you?")]
+        [Range(1,10, ErrorMessage =" choose a number between 1 and 10, to add more person ask it than your photographer ")]
         public int NumOfPersons { get; set; }
+      
 
         public virtual package package { get; set; }
 

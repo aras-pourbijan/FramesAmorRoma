@@ -11,28 +11,35 @@ using FramesAmorRoma.Models;
 
 namespace FramesAmorRoma.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private ModelDBcontext db = new ModelDBcontext();
 
         // GET: Users
-
+        [AllowAnonymous]
         public ActionResult login()
         {
             return View();
         }
         
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult login(User U)
         {
-            if (ModelState.IsValid && db.Users.Where(x => x.UserName == U.UserName && x.psw == U.psw).Count() == 1)
+            if (ModelState.IsValid && db.Users.Where(x => x.UserName == U.UserName && x.psw == U.psw && x.UserName != "admin").Count() == 1)
             {
                 FormsAuthentication.SetAuthCookie(U.UserName, true);
                 return Redirect(FormsAuthentication.DefaultUrl);
             }
+            else if(ModelState.IsValid && db.Users.Where(x => x.UserName == "admin" && x.psw == U.psw).Count() == 1)
+            {
+                FormsAuthentication.SetAuthCookie(U.UserName, true);
+                return Redirect("Managment");
+            }
             else
             {
-                ViewBag.loginerr = "Try again! username or password in incorrect!";
+                ViewBag.loginerr = "Try again! username or password is incorrect!";
             }
 
             return View(U);
@@ -48,7 +55,13 @@ namespace FramesAmorRoma.Controllers
             return View();
         }
 
+        public ActionResult UserHomePage()
+        {
+            return View();
+        }
 
+
+        [Authorize(Users = "admin")]
         public ActionResult Index()
         {
             return View(db.Users.ToList());
@@ -70,6 +83,7 @@ namespace FramesAmorRoma.Controllers
         }
 
         // GET: Users/Create
+        [Authorize(Users = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -80,6 +94,7 @@ namespace FramesAmorRoma.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Users = "admin")]
         public ActionResult Create([Bind(Include = "UserName,email,psw,tel")] User user)
         {
             if (ModelState.IsValid)
@@ -152,6 +167,7 @@ namespace FramesAmorRoma.Controllers
             }
             return View(user);
         }
+        [Authorize(Users = "admin")]
 
         // GET: Users/Delete/5
         public ActionResult Delete(int? id)
@@ -171,6 +187,7 @@ namespace FramesAmorRoma.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Users = "admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);
