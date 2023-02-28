@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using FramesAmorRoma.Models;
 
+
 namespace FramesAmorRoma.Controllers
 {
     [Authorize]
@@ -51,12 +52,21 @@ namespace FramesAmorRoma.Controllers
             return RedirectToAction("index","Home");
         }
         public ActionResult Managment()
-        { 
+        {
+
             return View();
         }
 
         public ActionResult UserHomePage()
         {
+            ModelDBcontext db = new ModelDBcontext();
+            User ThisUser=db.Users.Where(u=>u.UserName == User.Identity.Name).FirstOrDefault();
+            ViewBag.UserAuthIMG = ThisUser.imgURL;
+            ViewBag.UserName = ThisUser.FirstName;
+            ViewBag.IDuser = ThisUser.IDuser;
+
+            portfolio Thisportfolio = db.portfolios.Where(p=>p.User.UserName == User.Identity.Name).FirstOrDefault();
+            ViewBag.IDportfolio = Thisportfolio.IDportfolio;
             return View();
         }
 
@@ -203,6 +213,6 @@ namespace FramesAmorRoma.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+         }
     }
 }

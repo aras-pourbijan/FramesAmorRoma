@@ -1,8 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: oldlace;
-    color: #242423;
+    background-color: #1E2328;
+    background-image: url('img/template/webb-dark.jpg');
+    color: oldlace;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -12,8 +13,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -28,6 +29,7 @@ input,
 select,
 textarea {
     max-width: 280px;
+    min-Width:100px;
 }
 
 .navbar-inverse .navbar-toggle:hover,
@@ -37,84 +39,135 @@ textarea {
 }
 
 
-.card-package:hover{
-    transform:scale3d(1.1)
+.imgInGallary {
+    border: 2px solid #E8EDDF;
+        filter: brightness(0.9);
+}
+    .imgInGallary:hover {
+        border-right: 2px solid #F5B301;
+        filter: brightness(1.15);
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.6s;
+    }
+
+    .Allimgs div {
+        overflow: hidden
+    }
+
+.bg-warning {
+    background-color: #fed053 !important;
 }
 
-.img-hover:hover{
-    zoom:1.2;
+.text-warning {
+    color: #fed053 !important;
 }
 
-.bg-dark {
-    background-color: #1E2328 !important;
-}
+
+
+
 .nav-link {
     color: #E8EDDF;
 }
+
 .nav-item:hover {
     color: #F5CB5C;
 }
 
-.portfolio-cover:hover{
-    zoom:1.1;
-}
-
 
 .go2Gallary {
-    -webkit-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.34);
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.34);
     box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.25);
+    border: solid red 5px
+}
+.btnToGallary{
+
 }
 
 .card {
     overflow: hidden;
+    background-color: #1E2328;
+    color: whitesmoke;
+    border-block: 2px solid rgba(0,0,0,0.25);
+    border-left: 6px solid #F5B301;
+    -webkit-box-shadow: 0px 2px 9px -9px #F6F6F6;
+    box-shadow: 0px 2px 12px -9px #F6F6F6;
+}
+
+    .card:hover {
+        border: 1px solid #777;
+        -webkit-box-shadow: 0px 8px 18px -9px #F6C93A;
+        box-shadow: 0px 8px 18px -9px #F6C93A;
+        transition-timing-function: ease-out;
+        transition-duration: 0.4s;
+        background-color: #3B3F46;
+    }
+
+
+.card-title {
+    z-index: 1;
 }
 
 .cardGallary {
-    filter: brightness(0.6);
+    filter: brightness(0.75);
+    z-index: 0;
+    top: 0px;
+    left: 0px
 }
+
+
     .cardGallary:hover {
         filter: brightness(1.1);
-        transition-timing-function: ease-in-out;
-        transition-duration: 0.7s;
+        transition-timing-function: ease-out;
+        transition-duration: 0.2s;
         object-fit: contain;
-        transform: scale(1.15);
+        z-index: 2;
+        left: 1px
     }
 
-    .profilePhotographer {
+.profilePhotographer {
     filter: grayscale(100%);
-    width:50px;
-    height:50px;
-    object-fit:cover
+    width: 60px;
+    height: 60px;
+    object-fit: cover
+}
+.portfolioPhotographer {
+    border: solid 2px #fed053;
+}
+
+
+.btn-outline-light:hover {
+    background-color: #fed053;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.4s;
+}
+
+.img-box{
+
+}
+
+.homeIMG {
+    height: 50vh;
+    width: 100%;
+    object-fit: cover;
+    position: center
+}
+
+
+.btn-login {
+    background-color: #3b3f46;
+    color: white;
+    padding-inline: 50px;
+    margin: 5px;
+}
+
+    .btn-login:hover {
+        background-color: #F5CB5C;
+        color: black;
+        font-weight: 700
     }
 
 
-.btn-outline-light:hover{
-
-    background-color:#fed053;
-    transition-timing-function:ease-in-out;
-    transition-duration:0.4s;
-}
-
-.homeIMG{
-    height:50vh;
-    width:100%;
-    object-fit:cover;
-    position:center
-}
-
-.homeCards{
-
-}
-
-.btn-login{
-    background-color:#3b3f46;
-    color:white;
-    padding-inline :50px;
-    margin:5px;
-}
-
-.btn-login:hover {
-    background-color:#F5CB5C;
-    color:black;
-    font-weight:700
+.gallary {
+    border-left: 6px solid #F5B301;
+    border-left: 6px solid #F5B301;
 }

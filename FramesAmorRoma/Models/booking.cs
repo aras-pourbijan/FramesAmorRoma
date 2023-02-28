@@ -20,12 +20,15 @@ namespace FramesAmorRoma.Models
         public  DateTime  bookTime { get; set; }
 
 
+        [Required]
         [Column(TypeName = "date")]
-        [Display(Name = "select a date")]
+        [Display(Name = "Date of shooting")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
 
         public DateTime daterequest { get; set; }
         
-        [Display(Name = "your preferred time")]
+        [Required]
+        [Display(Name = "Preferred time")]
         [DataType(DataType.Time)]
         public DateTime prefertHour { get; set; }
 
@@ -47,7 +50,8 @@ namespace FramesAmorRoma.Models
         [Display(Name = "your mobile number")]
         public string clientTel { get; set; }
 
-        [Display(Name = "how many people are you?")]
+        [Required]
+        [Display(Name = "Number Of person")]
         [Range(1,10, ErrorMessage =" choose a number between 1 and 10, to add more person ask it than your photographer ")]
         public int NumOfPersons { get; set; }
       

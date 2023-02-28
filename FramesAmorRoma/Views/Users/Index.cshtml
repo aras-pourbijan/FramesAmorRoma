@@ -9,12 +9,12 @@
 
 
 
-<p class="d-flex justify-content-center">
-    @Html.ActionLink("Add a New User", "Create", null, new { @class = "btn btn-outline-success d-3 text-decoration-none" })
+<p class="d-flex justify-content-center ">
+    @Html.ActionLink("Add a New User", "Create", null, new { @class = "btn btn-outline-warning d-3 text-decoration-none" })
 </p>
 
 
-<table class="table w-75 ms-auto me-auto">
+<table class="table w-75 ms-auto me-auto bg-light rounded-5 table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.UserName)
@@ -53,9 +53,11 @@
         
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.IDuser }) |
-            @Html.ActionLink("Details", "Details", new { id = item.IDuser }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IDuser })
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-warning">@Html.ActionLink("Edit", "Edit", new { id = item.IDuser }, new { @class = "bi bi-pencil link-dark text-decoration-none" })</button>
+                <button type="button" class="btn btn-warning">@Html.ActionLink("Details", "Details", new { id = item.IDuser }, new { @class = "bi bi-info-square link-dark text-decoration-none" })</button>
+                <button type="button" class="btn btn-warning">@Html.ActionLink("Delete", "Delete", new { id = item.IDuser }, new { @class = "bi bi-trash3 link-dark text-decoration-none" })</button>
+            </div>
         </td>
     </tr>
 }

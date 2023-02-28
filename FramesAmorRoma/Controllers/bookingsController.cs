@@ -8,7 +8,6 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using FramesAmorRoma.Models;
-
 namespace FramesAmorRoma.Controllers
 {
     public class bookingsController : Controller
@@ -21,7 +20,7 @@ namespace FramesAmorRoma.Controllers
         public ActionResult Index()
         {
             var bookings = db.bookings.Include(b => b.package).Include(b => b.spot).Include(b => b.User);
-            return View(bookings.ToList());
+            return View(bookings.OrderByDescending(x => x.IDbook).ToList());
         }
 
         // GET: bookings/Details/5
@@ -57,7 +56,7 @@ namespace FramesAmorRoma.Controllers
         {
             if (ModelState.IsValid)
             {
-                booking.bookTime= DateTime.Now.Date; 
+                booking.bookTime= DateTime.Now; 
 
                 db.bookings.Add(booking);
                 db.SaveChanges();
@@ -82,7 +81,7 @@ namespace FramesAmorRoma.Controllers
 
         [HttpPost]
 
-        public ActionResult CreateByID([Bind(Include = "IDbook,IDuser,IDspot,daterequest,prefertHour,IDpackage,clientName,clientEmail,clientTel,NumOfPersons")] booking booking,int ID)
+        public ActionResult CreateByID(booking booking,int ID)
         {
             if (ModelState.IsValid)
             {
@@ -91,20 +90,36 @@ namespace FramesAmorRoma.Controllers
                 booking.bookTime = DateTime.Now.Date;
 
                 db.bookings.Add(booking);
+                var User = db.Users.Find(ID);
+                var spot = db.spots.Find(booking.IDspot);
+                var package = db.packages.Find(booking.IDpackage);
                 db.SaveChanges();
 
-                MailAddress Sender = new MailAddress(booking.clientEmail);
-                MailAddress Reciver = new MailAddress("framesamor@virgilio.it");
+                MailAddress customer = new MailAddress(booking.clientEmail);
+                MailAddress AdminMail = new MailAddress("framesamor@virgilio.it");
+                MailAddress Photographer = new MailAddress(User.email);
+
 
                 MailMessage mailMessage = new MailMessage();
-                mailMessage.Subject = "your request for photoshoot with Frames Amor ";
-                mailMessage.Body = "hrhrhrhrh";
-                mailMessage.From = Reciver;
-                mailMessage.To.Add(Reciver);
+                mailMessage.Subject = "Your request for photoshoot with Photographer " + User.FirstName + " from Amor Frames";
+                mailMessage.Body = "Thank You for being our esteemed customer. Your support and trust in us are much cherished. \nThank You once again! \n---------------------------------------------\n" +
+                    "---------------------------------------------\n"+"Your Appointment With: "+User.FirstName+ " " + User.LastName + "\nTel: "+ User.tel+
+                    "\n---------------------------------------------\nBooking number: " + booking.IDbook + "\nBooking date: " + booking.daterequest.ToShortDateString() + "\nLocation: "+ spot.locationName+" - "+ spot.Locationaddress + "\nPrefert Hour: " + 
+                    booking.prefertHour.ToShortTimeString() + "\nPackage: " + package.PackageName + " - " + ((int)package.price)+ "" + "€ - included images: " + package.PicsIncluded +
+                    "\nCustomer Name: " + booking.clientName +
+                    "\nCustomer Mail: " + booking.clientEmail +
+                    "\nCustomer contact number: " + booking.clientTel+
+                    "\n" +booking.NumOfPersons+" Perosn(s)" +
+                    "---------------------------------------------\n"+
+                    "You Will Be Contacted Shortly by Photographer";
+                mailMessage.From = AdminMail;
+                mailMessage.To.Add(AdminMail);
+                mailMessage.To.Add(customer);
+                mailMessage.To.Add(Photographer);
 
                 SmtpClient client= new SmtpClient("out.virgilio.it");
                 client.Host = "out.virgilio.it";
-                client.Port = 465;
+                client.Port = 587;
                 
                 client.Credentials = new NetworkCredential("framesamor@virgilio.it", "1234Admin@");
                 client.Send(mailMessage);

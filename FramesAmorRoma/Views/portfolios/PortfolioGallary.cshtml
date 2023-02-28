@@ -14,82 +14,32 @@
 
     @foreach (var item in Model)
     {
-        <div class="card col-12 col-md-6 col-lg-3 m-2">
+        <div class="card col-12 col-md-6 col-lg-3 m-2  cardGallary">
+
             <div class="col-12 m-0 p-0">
-                <img src="~/Content/img/portfolio/@item.coverIMG" class="img-fluid rounded-bottom cardGallary " style="position:center;height:45vh; width:100%; object-fit:cover" alt="cover">
+                <img src="~/Content/img/portfolio/@item.coverIMG" class="img-fluid rounded-bottom " style="position:center;height:45vh; width:100%; object-fit:cover" alt="cover">
 
             </div>
-
+            <div class="d-flex justify-content-evenly">
             <h3 class="card-title mt-2 mb-0 text-center justify-content-center">
                 <img src="~/Content/img/profiles/@item.User.imgURL" class="img-fluid rounded-circle profilePhotographer" alt="...">
             </h3>
             <div>
-                <h4 class="card-title mt-2 mb-0 text-center ">
+                <h4 class="card-title mt-2 mb-0 text-center text-white ">
                     @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
                 </h4>
                 <h6 class="text-secondary m-0 text-center">
                     @Html.DisplayFor(modelItem => item.User.experience) Years Of Experience
                 </h6>
-                <div class="btnToGallary text-center me-auto ms-auto">
-                    @Html.ActionLink("Enter To Gallary", "Details", new { id = item.IDportfolio }, new { @class = "link-dark btn btn-outline-light mt-2 my-0 fw-bolder border-0 rounded-start text-decoration-none rounded-0 " })
-                </div>
             </div>
-            
+
+            </div>
+            <div class="btnToGallary text-center mb-2 me-auto ms-auto ">
+                @Html.ActionLink("Enter To Gallary", "Details", new { id = item.IDportfolio }, new { @class = "link-light text-decoration-none " })
+            </div>
+
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        @*<div class="col-10 card row go2Gallary g-2  mt-2 p-0 bg-light border-0 rounded-bottom ">
-
-            <div class="col-12 m-0 p-0">
-                <img src="~/Content/img/portfolio/@item.coverIMG" class="img-fluid rounded-bottom cardGallary " style="position:center;height:45vh; width:100%; object-fit:cover" alt="cover">
-                
-            </div>
-
-            <div class="row col-12">
-
-                <div class=" col-12 col-md-3  m-0 p-0">
-
-                    <div class="col-12  m-0">
-                        <div class="card-body">
-                            <div class=" text-center">
-                                <img src="~/Content/img/profiles/@item.User.imgURL" class="img-fluid rounded-circle w-25 me-auto ms-auto profilePhotographer" alt="...">
-                                <h3 class="card-title mt-2 mb-0">
-                                    @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
-                                </h3>
-                                <h6 class="text-secondary m-0">
-                                    @Html.DisplayFor(modelItem => item.User.experience) Years Of Experience
-                                </h6>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-9  m-0 mt-2 d-flex flex-column justify-content-around align-content-end" >
-                    
-                        <p>@Html.DisplayFor(modelItem => item.User.aboutME)</p>
-                        <div class="btnToGallary text-center me-auto ms-auto">
-                            @Html.ActionLink("Enter To Gallary", "Details", new { id = item.IDportfolio }, new { @class = "link-dark btn btn-outline-light mt-2 my-0 fw-bolder border-0 rounded-start text-decoration-none rounded-0" })
-                        </div>
-
-
-                </div>
-            </div>
-        </div>*@
 
     }
 

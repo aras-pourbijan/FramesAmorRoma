@@ -20,11 +20,35 @@
             </div>
 
             <div class="col row col-md-8 d-flex align-items-center">
-                <img src="~/Content/img/spots/@Model.spotIMG" style="width:auto;height:60vh; object-fit:cover; object-position:center" class="img-thumbnail ms-auto me-auto col " alt="location">
-                <img src="~/Content/img/spots/@Model.spot1img" style="width: auto; height: 60vh; object-fit: cover; object-position: center " class="img-thumbnail ms-auto col me-auto d-none d-md-flex " alt="location">
+                <div class="col-12">
+                    <img src="~/Content/img/spots/@Model.spotIMG" style="width:100%; height:40vh; object-fit:cover; object-position:center" class="p-0 m-0 rounded-end" alt="location">
+                </div>
 
-                <img src="~/Content/img/spots/@Model.spot2img" style="width: auto; height: 60vh; object-fit: cover; object-position: center " class="img-thumbnail ms-auto col me-auto d-none d-md-flex" alt="location">
-                <img src="~/Content/img/spots/@Model.spot3img" style="width: auto; height: 60vh; object-fit: cover; object-position: center " class="img-thumbnail ms-auto col me-auto d-none d-md-flex" alt="location">
+
+                <div lass="col-12  carousel slide carousel-fade me-auto ms-auto shadow my-3" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="2000">
+                            <img src="~/Content/img/spots/@Model.spot1img" class="homeIMG d-block w-100 border border-4 border-light" alt="photo Example" />
+                        </div>
+                        <div class="carousel-item active" data-bs-interval="2000">
+                            <img src="~/Content/img/spots/@Model.spot2img" class="homeIMG d-block w-100 border border-4 border-light" alt="photo Example" />
+                        </div>
+                        <div class="carousel-item active" data-bs-interval="2000">
+                            <img src="~/Content/img/spots/@Model.spot3img" class="homeIMG d-block w-100 border border-4 border-light" alt="photo Example" />
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
 
             </div>
             <p class=" d-md-none">

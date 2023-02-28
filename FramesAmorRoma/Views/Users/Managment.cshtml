@@ -2,15 +2,36 @@
     ViewBag.Title = "Managment";
 }
 
-<h2>Managment</h2>
 
 
-<div class="d-flex justify-content-evenly btn-group">
-    <h3>@Html.ActionLink("Users", "Index", "Users", null, new { @class = "link-dark text-decoration-none" }) </h3>
-    <h3>@Html.ActionLink("Spots", "Index", "Spots", null, new { @class = "link-dark text-decoration-none" }) </h3>
-    <h3>@Html.ActionLink("portfolios", "Index", "portfolios", null, new { @class = "link-dark text-decoration-none" }) </h3>
-    <h3>@Html.ActionLink("Packages", "Index", "Packages", null, new { @class = "link-dark text-decoration-none" }) </h3>
-    <h3>@Html.ActionLink("bookings", "Index", "Bookings", null, new { @class = "link-dark text-decoration-none" }) </h3>
-   
+
+<div class="d-flex flex-column flex-md-row g-3 justify-content-center align-content-center mt-5 me-auto ms-auto row">
+
+    <div class="card card-package m-3 pt-3" style="width: 25rem;">
+        <div class="card-body text-center ">
+            <h5>@Html.ActionLink("Users", "Index", "Users", null, new { @class = "link-warning text-decoration-none text-uppercase text-white" }) </h5>
+        </div>
+    </div>
+    <div class="card card-package m-3 pt-3" style="width: 25rem;">
+        <div class="card-body text-center ">
+            <h5>@Html.ActionLink("Spots", "Index", "Spots", null, new { @class = "link-warning text-decoration-none text-uppercase text-white" }) </h5>
+        </div>
+    </div>
+    <div class="card card-package m-3 pt-3" style="width: 25rem;">
+        <div class="card-body text-center ">
+            <h5>@Html.ActionLink("portfolios", "Index", "portfolios", null, new { @class = "link-warning text-decoration-none text-uppercase text-white" }) </h5>
+        </div>
+    </div>
+    <div class="card card-package m-3 pt-3" style="width: 25rem;">
+        <div class="card-body text-center ">
+            <h5>@Html.ActionLink("packages", "Index", "packages", null, new { @class = "link-warning text-decoration-none text-uppercase text-white" }) </h5>
+        </div>
+    </div>
+    <div class="card card-package m-3 pt-3" style="width: 25rem;">
+        <div class="card-body text-center ">
+            <h5>@Html.ActionLink("bookings managment", "Index", "Bookings", null, new { @class = "link-warning text-decoration-none text-uppercase text-white" }) </h5>
+        </div>
+    </div>
+
+
 </div>
-

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FramesAmorRoma.Models;
+using System.Web.Security;
 
 namespace FramesAmorRoma.Controllers
 {
@@ -177,6 +178,7 @@ namespace FramesAmorRoma.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 portfolio.IDuser = ID;
 
                 if (Cover != null)

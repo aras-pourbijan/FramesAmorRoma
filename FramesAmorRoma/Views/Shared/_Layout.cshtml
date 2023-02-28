@@ -29,14 +29,20 @@
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("Portfolio Gallary", "PortfolioGallary", "portfolios", null, new { @class = "nav-link active text-decoration-none" })
-                       
-                      
+
+
                     </li>
 
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && User.Identity.Name == "admin")
                     {
                         <li>
                             @Html.ActionLink("Managment", "Managment", "users", null, new { @class = "nav-link active text-decoration-none" })
+                        </li>
+                    }
+                    else if (User.Identity.IsAuthenticated && User.Identity.Name != "admin")
+                    {
+                        <li>
+                            @Html.ActionLink("My dashboard", "UserHomePage", "users", null, new { @class = "nav-link active text-decoration-none" })
                         </li>
                     }
                     else
@@ -53,7 +59,7 @@
                             <img src="@User." alt="" width="32" height="32" class="rounded-circle me-2">
                             <div class="text-white text-uppercase">@User.Identity.Name</div>
                             <div>
-                                <i>@Html.ActionLink("  Logout", "logout", "users", null, new { @class = "bi bi-box-arrow-in-left text-decoration-none text-light mx-5 btn btn-sm btn-outline-danger me-5" })</i>
+                                <i>@Html.ActionLink("       Logout", "logout", "users", null, new { @class = "bi bi-box-arrow-in-left text-decoration-none text-light mx-5 btn btn-sm btn-outline-danger me-5" })</i>
                             </div>
                         </div>
                     }
@@ -61,7 +67,7 @@
                     {
 
                         <div>
-                            <i>@Html.ActionLink("  LOGIN", "login", "users", null, new { @class = "bi bi-box-arrow-in-right text-decoration-none text-white btn btn-sm btn-outline-success me-5" })</i>
+                            <i>  @Html.ActionLink("     LOGIN", "login", "users", null, new { @class = "bi bi-box-arrow-in-right text-decoration-none text-white btn btn-sm btn-outline-warning me-5" })</i>
                         </div>
 
                     }

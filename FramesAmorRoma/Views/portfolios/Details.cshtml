@@ -5,79 +5,77 @@
 }
 
 
-<div class="row mt-2 p-0 mb-0 ">
-    <img src="~/Content/img/portfolio/@Model.coverIMG" style="width:100vw;height:40vh; object-fit:cover; object-position:center" alt="profile Picture" class="p-0 m-0 rounded-top ">
+<div class="container-fluid m-0 gallary">
+
+    <div class=" row mt-2 p-0 mb-0  border-bottom-2 border-white">
+
+        <img src="~/Content/img/portfolio/@Model.coverIMG" style="width:100vw;height:40vh; object-fit:cover; object-position:center" alt="profile Picture" class="p-0 m-0 rounded-end">
+
+
+    </div>
+    <div class="row mt-2 d-flex justify-content-between shadow-lg rounded rounded-2 pt-0 mt-0 ">
+        <div class="col-12 col-md-3 text-center">
+            <img src="~/Content/img/profiles/@Model.User.imgURL" class="img-fluid rounded-circle portfolioPhotographer m-3 p-0" alt="profile Picture" style="max-width:200px">
+            <div class="d-flex justify-content-center gap-3">
+                <a class="fw-bold text-decoration-none text-warning" style="font-size:2rem" href="@Model.User.Website"><i class="bi bi-camera" data-toggle="tooltip" data-placement="top" title="Personal website"></i></a>
+                <a class="fw-bold text-decoration-none text-warning" style="font-size:2rem" href="@Model.User.instagram"><i class="bi bi-instagram" data-toggle="tooltip" data-placement="top" title="Instagram Page"></i></a>
+                <a class="fw-bold text-decoration-none text-warning" style="font-size:2rem" href="mailto:@Model.User.email"><i class="bi bi-envelope-at" data-toggle="tooltip" data-placement="top" title="email"></i></a>
+
+            </div>
+
+            <h4 class="text-uppercase m-2">The @Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName) portfolios</h4>
+            <p>@Html.DisplayFor(model => model.User.aboutME)</p>
+
+            <div class="btn-group my-2" role="group" aria-label="Basic outlined example">
+                <button type="button" class="btn btn-outline-warning">
+                    @Html.ActionLink("<", "PortfolioGallary", null, new { @class = "link-light text-decoration-none" })
+                </button>
+                <button type="button" class="btn btn-outline-warning">
+                    @Html.ActionLink("Book Your Photoshoot Now!", "CreateByID", "bookings", new { id = Model.IDuser }, new { @class = "link-light text-decoration-none" })
+                </button>
+            </div>
+        </div>
+        <div class="img-box col-12 col-md-9 shadow-lg rounded rounded-2">
+            <div class="Allimgs row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                <div class="col m-0 p-0">
+                    <img class="imgInGallary" src="~/Content/img/portfolio/@Model.img1" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
+                </div>
+                <div class="col m-0 p-0">
+                    <img class="imgInGallary" src="~/Content/img/portfolio/@Model.img2" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
+
+                </div>
+                <div class="col m-0 p-0">
+                    <img class="imgInGallary" src="~/Content/img/portfolio/@Model.img3" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
+
+                </div>
+                <div class="col m-0 p-0">
+                    <img class="imgInGallary" src="~/Content/img/portfolio/@Model.img4" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
+                </div>
+                <div class="col m-0 p-0">
+                    <img class="imgInGallary" src="~/Content/img/portfolio/@Model.img5" style="width: 100%; height: 100%; object-fit: cover; object-position: center" alt="profile Picture">
+                </div>
+                <div class="col m-0 p-0">
+                    <img class="imgInGallary" src="~/Content/img/portfolio/@Model.img6" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
+                </div>
+                <div class="col m-0 p-0">
+                    <img class="imgInGallary" src="~/Content/img/portfolio/@Model.img7" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
+                </div>
+                <div class="col m-0 p-0">
+                    <img class="imgInGallary" src="~/Content/img/portfolio/@Model.img8" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
+                </div>
+                <div class="col m-0 p-0">
+                    <img class="imgInGallary" src="~/Content/img/portfolio/@Model.img9" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
+                </div>
+            </div>
+                <div class="mt-5 col d-flex me-automs-auto">
+                    <button class="btn btn-outline-warning me-auto ms-auto" >
+                        @Html.ActionLink("Book Your Photoshoot Now!", "CreateByID", "bookings", new { id = Model.IDuser }, new { @class = "link-light text-decoration-none" })
+                    </button>
+                </div>
+        </div>
+
+
+    </div>
 
 
 </div>
-
-<div class="row mt-0 d-flex justify-content-between shadow-lg rounded rounded-2 pt-0 mt-0">
-    <div class="col-12 col-md-3 text-center">
-        <img src="~/Content/img/profiles/@Model.User.imgURL" class="img-fluid rounded-circle p-5" alt="profile Picture">
-
-
-        <h4>The @Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName) portfolios</h4>
-        <hr />
-        <p>@Html.DisplayFor(model => model.User.aboutME)</p>
-        <div class="d-flex flex-column align-content-center ">
-            <div class="btn btn-success my-1 me-auto ms-auto w-75">
-                <a class="text-white text-decoration-none " href="tel:@Model.User.tel">@Model.User.tel</a>
-            </div>
-
-            <div class="d-flex justify-content-evenly">
-
-                <a class="fw-bold text-decoration-none text-dark" style="font-size:2rem" href="@Model.User.Website"><i class="bi bi-camera" data-toggle="tooltip" data-placement="top" title="Personal website"></i></a>
-                <a class="fw-bold text-decoration-none text-dark" style="font-size:2rem" href="@Model.User.instagram"><i class="bi bi-instagram" data-toggle="tooltip" data-placement="top" title="Instagram Page"></i></a>
-                <a class="fw-bold text-decoration-none text-dark" style="font-size:2rem" href="mailto:@Model.User.email"><i class="bi bi-envelope-at" data-toggle="tooltip" data-placement="top" title="email"></i></a>
-
-            </div>
-
-            <div class="btn btn-warning me-auto ms-auto w-75 mt-5 border border-1">
-                @Html.ActionLink("Book Your Photoshoot Now!", "CreateByID", "bookings", new { id = Model.IDuser, @class = "nav-link active text-decoration-none" },null)
-            </div>
-        </div>
-
-    </div>
-    <div class="col-12 col-md-9 shadow-lg rounded rounded-2">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-            <div class="col m-0 p-0">
-                <img class="img-hover" src="~/Content/img/portfolio/@Model.img1"  style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
-            </div>
-            <div class="col m-0 p-0">
-                <img class="img-hover" src="~/Content/img/portfolio/@Model.img2" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
-
-            </div>
-            <div class="col m-0 p-0">
-                <img class="img-hover" src="~/Content/img/portfolio/@Model.img3" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
-
-            </div>
-            <div class="col m-0 p-0">
-                <img class="img-hover" src="~/Content/img/portfolio/@Model.img4" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
-            </div>
-            <div class="col m-0 p-0">
-                <img class="img-hover" src="~/Content/img/portfolio/@Model.img5" style="width: 100%; height: 100%; object-fit: cover; object-position: center" alt="profile Picture">
-            </div>
-            <div class="col m-0 p-0">
-                <img class="img-hover" src="~/Content/img/portfolio/@Model.img6" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
-            </div>
-            <div class="col m-0 p-0">
-                <img class="img-hover" src="~/Content/img/portfolio/@Model.img7" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
-            </div>
-            <div class="col m-0 p-0">
-                <img class="img-hover" src="~/Content/img/portfolio/@Model.img8" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
-            </div>
-            <div class="col m-0 p-0">
-                <img class="img-hover" src="~/Content/img/portfolio/@Model.img9" style="width:100%;height:100%; object-fit:cover; object-position:center" alt="profile Picture">
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IDportfolio }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

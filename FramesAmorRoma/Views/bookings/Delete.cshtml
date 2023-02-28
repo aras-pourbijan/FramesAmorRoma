@@ -7,98 +7,39 @@
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    @Html.ActionLink("<", "Index", null, new { @class = "link-light text-decoration-none" }) |
+    <input type="submit" value="Delete" class="btn btn-danger" /> 
+
+</div>
+}
 <div>
-    <h4>booking</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.package.PackageName)
-        </dt>
+    <div class="mt-5 d-flex justify-content-center me-auto ms-auto border-1 border-white">
 
-        <dd>
-            @Html.DisplayFor(model => model.package.PackageName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.spot.locationName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.spot.locationName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.bookTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.bookTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.daterequest)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.daterequest)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.prefertHour)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.prefertHour)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.clientName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.clientName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.clientEmail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.clientEmail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.clientTel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.clientTel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumOfPersons)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumOfPersons)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="bg-dark" style="width: 35rem;">
+            <div class="card-body">
+                <h3 class="text-center">Details of booking n.  @Html.DisplayFor(model => model.IDbook)</h3>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">@Html.DisplayFor(model => model.clientName) ( @Html.DisplayFor(model => model.NumOfPersons) P)</li>
+                <li class="list-group-item">  @Html.DisplayNameFor(model => model.package.PackageName)  :  @Html.DisplayFor(model => model.package.PackageName)</li>
+                <li class="list-group-item"> @Html.DisplayNameFor(model => model.spot.locationName) :   @Html.DisplayFor(model => model.spot.locationName)</li>
+                <li class="list-group-item">Photographer :   @Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName) </li>
+                <li class="list-group-item">@Html.DisplayNameFor(model => model.bookTime)   :   @Html.DisplayFor(model => model.bookTime)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(model => model.daterequest)    :   @Html.DisplayFor(model => model.daterequest) ( @Html.DisplayFor(model => model.prefertHour))</li>
+            </ul>
+            <div class="d-flex card-body justify-content-evenly">
+                <a href="tel:@Html.DisplayFor(model => model.clientTel)" class="card-link link-warning text-decoration-none">@Html.DisplayFor(model => model.clientTel)</a>
+                <a href="mailto:@Html.DisplayFor(model => model.clientEmail)" class="card-link link-warning text-decoration-none">@Html.DisplayFor(model => model.clientEmail)</a>
+            </div>
         </div>
-    }
+
+    </div>
+
 </div>

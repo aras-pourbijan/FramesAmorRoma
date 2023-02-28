@@ -4,13 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table table-hover w-75 me-auto ms-auto">
+<table class="table table-hover w-75 me-auto ms-auto text-bg-light">
     <tr>
+        <th>
+            Booking Number
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.package.PackageName)
         </th>
@@ -29,11 +28,16 @@
         <th>
             @Html.DisplayNameFor(model => model.NumOfPersons)
         </th>
-        <th></th>
+        <th class="d-flex justify-content-center">
+            <button class="btn btn-outline-warning link-dark text-decoration-none">@Html.ActionLink("Add a new request", "Create", null,new { @class = "link-dark text-decoration-none" })</button>
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDbook)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.package.PackageName)
         </td>
@@ -45,7 +49,7 @@
             @Html.DisplayFor(modelItem => item.User.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.daterequest)
+            @Html.DisplayFor(modelItem => item.daterequest, "{0:yyyy-MM-dd}")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.prefertHour)
@@ -54,10 +58,14 @@
             @Html.DisplayFor(modelItem => item.NumOfPersons)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDbook }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDbook }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDbook })
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-warning">@Html.ActionLink("Edit", "Edit", new { id = item.IDbook }, new { @class = "bi bi-pencil link-dark text-decoration-none" })</button>
+                <button type="button" class="btn btn-warning">@Html.ActionLink("Details", "Details", new { id = item.IDbook }, new { @class = "bi bi-info-square link-dark text-decoration-none" })</button>
+                <button type="button" class="btn btn-warning">@Html.ActionLink("Delete", "Delete", new { id = item.IDbook }, new { @class = "bi bi-trash3 link-dark text-decoration-none" })</button>
+            </div>
+
         </td>
+
     </tr>
 }
 

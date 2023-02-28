@@ -1,7 +1,32 @@
 ﻿
 @{
     ViewBag.Title = "UserHomePage";
+
 }
 
-<h2>UserHomePage</h2>
+<div class="container">
+    <div class="row " >
+        <div class="col-12 col-md-6 d-flex flex-column text-center bg-dark justify-content-center" style="height:60vh" >
+            <div>
+                <div class="btn-group" role="group">
+                   
+                    <button type="button" class="btn btn-outline-warning  text-decoration-none">@Html.ActionLink("+", "CreateByID", "portfolios", new { id = @ViewBag.IDuser }, new { @class = "link-light text-decoration-none" })</button>
+                    <button type="button" class="btn btn-outline-warning  text-decoration-none">@Html.ActionLink("My portfolio", "Details", "portfolios", new { id = ViewBag.IDportfolio }, new { @class = "link-light text-decoration-none" })</button>
+
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-warning  text-decoration-none">@Html.ActionLink("🖊", "Edit", "Users", new { id = @ViewBag.IDuser }, new { @class = "link-light text-decoration-none" })</button>
+                    <button type="button" class="btn btn-outline-warning  text-decoration-none">@Html.ActionLink("My Information", "Details", "Users", new { id = ViewBag.IDuser }, new { @class = "link-light text-decoration-none" })</button>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 col-md-6 d-flex flex-column text-center bg-light justify-content-center" style="height:60vh">
+            <img src="~/Content/img/profiles/@ViewBag.UserAuthIMG" style="width: 20vw; height: 20vw; object-fit: cover; object-position: center" class="rounded-circle ms-auto me-auto shadow-lg" alt="location">
+            <h1 class="text-dark mt-3">Hi @ViewBag.UserName</h1>
+            <h2 class="text-dark">Welcome to your dashboard!</h2>
+        </div>
+    </div>
+</div>
 
