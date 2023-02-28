@@ -4,79 +4,56 @@
 
 
 
-<div class="container-fluid">
-
-    <div class="card text-bg-light border-0 shadow-none">
-        <img src="~/Content/img/template/homepage.jpg" class="card-img" alt="homepage" />
-
-        <div class="card-img-overlay d-flex flex-column justify-content-end justify-content-md-center">
-
-            <h3 class="ms-2 card-title text-light fw-bold">A PHOTOGRAPH IS <br /> THE PAUSE BUTTON OF LIFE.</h3>
+<div class="homepage ">
 
 
-        </div>
-    </div>
+    <div class="row d-flex flex-column align-items-center  align-items-md-start  my-2 p-0 me-auto ms-auto gap-4">
 
-    <div class="row d-flex justify-content-center my-4 me-auto ms-auto gap-2">
-
-
-        <div class="card homeCards col-12 col-lg-3 pt-3 shadow border-0">
-            <div class="card-body text-center ">
+        <div class="card homeCards col-12 col-lg-4 p-0 shadow border-0 d-flex">
+            <div class="card-body text-center">
                 <h3 class="card-subtitle text-muted text-uppercase">1</h3>
-                <h3 class=" card-title m-3 text-uppercase">browse photo galleries</h3>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                </p>
+                <h3 class="card-title m-3 text-uppercase">browse photo galleries</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
             </div>
         </div>
-        <div class="card homeCards col-12 col-lg-3 pt-3 shadow border-0">
-            <div class="card-body text-center ">
+        <div class="card homeCards col-12 col-lg-4 p-0 shadow border-0">
+            <div class="card-body text-center">
                 <h3 class="card-subtitle text-muted text-uppercase">2</h3>
-                <h3 class=" card-title m-3 text-uppercase">choose your favorite photographer</h3>
-                <p class="card-text">
-                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                </p>
+                <h3 class="card-title m-3 text-uppercase">choose your favorite photographer</h3>
+                <p class="card-text">Aenean commodo ligula eget dolor. Aenean massa. Cum sociis</p>
             </div>
         </div>
-        <div class="card homeCards col-12 col-lg-3 pt-3 shadow border-0">
-            <div class="card-body text-center ">
+        <div class="card homeCards col-12 col-lg-4 p-0 shadow border-0">
+            <div class="card-body text-center">
                 <h3 class="card-subtitle text-muted text-uppercase">3</h3>
-                <h3 class=" card-title m-3 text-uppercase">book a photoshoot in your  favorite spot!</h3>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                </p>
+                <h3 class="card-title m-3 text-uppercase">book a photoshoot in your  favorite spot!</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
             </div>
         </div>
-
-    </div>
-
-    <div class="btn btn-warning my-2 d-flex justify-content-center w-25 me-auto ms-auto ">
-        @Html.ActionLink("Start here!", "PortfolioGallary", "portfolios", null, new { @class = "link-dark text-decoration-none" })
-    </div>
-
-
-    <div class="row text-center">
-        <div lass="col-5 col-md-auto carousel slide carousel-fade me-auto ms-auto shadow my-3" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="2000">
-                    <img src="~/Content/img/template/2G7A6905-Edit.jpg" class="homeIMG d-block w-100 border border-4 border-light" alt="photo Example" />
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src="~/Content/img/template/2G7A6007.jpg" class="homeIMG d-block w-100 border border-4 border-light" alt="photo Example" />
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src="~/Content/img/template/2G7A6612.jpg" class="homeIMG d-block w-100 border border-4 border-light" alt="photo Example" />
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src="~/Content/img/template/2G7A7014.jpg" class="homeIMG d-block w-100 border border-4 border-light" alt="photo Example" />
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src="~/Content/img/template/2G7A8008.jpg" class="homeIMG d-block w-100 border border-4 border-light" alt="photo Example" />
-                </div>
-            </div>
+        <div class=" col-12 col-lg-4 p-0 shadow border-0 btn btn-warning px-5 ">
+            @Html.ActionLink("Start here!", "PortfolioGallary", "portfolios", null, new { @class = "link-dark fw-bolder  text-decoration-none " })
         </div>
     </div>
-
-
-
 </div>
+
+
+
+<div class="containerimg">
+    <div class="box">
+        <img src="~/Content/img/template/2G7A6905-Edit.jpg" />
+    </div>
+    <div class="box">
+        <img src="~/Content/img/template/2G7A6007.jpg" />
+    </div>
+    <div class="box">
+        <img src="~/Content/img/template/2G7A6612.jpg" />
+    </div>
+    <div class="box">
+        <img src="~/Content/img/template/2G7A7014.jpg" />
+    </div>
+</div>
+
+
+
+
+

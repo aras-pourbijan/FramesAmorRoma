@@ -55,11 +55,12 @@
                 <div>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <div class="d-flex  align-items-center">
-                            <img src="@User." alt="" width="32" height="32" class="rounded-circle me-2">
-                            <div class="text-white text-uppercase">@User.Identity.Name</div>
+                        <div class="d-flex  align-items-center gap-2">
+                            @*<img src="~/Content/img/portfolio/" alt="" width="32" height="32" class="rounded-circle me-2">*@
+                            <i class="bi bi-person-circle"></i>
+                            <div class="text-white text-uppercase"> @User.Identity.Name</div>
                             <div>
-                                <i>@Html.ActionLink("       Logout", "logout", "users", null, new { @class = "bi bi-box-arrow-in-left text-decoration-none text-light mx-5 btn btn-sm btn-outline-danger me-5" })</i>
+                                <i>@Html.ActionLink("Logout", "logout", "users", null, new { @class = "bi bi-box-arrow-in-left text-decoration-none text-light mx-5 btn btn-sm btn-outline-danger me-5" })</i>
                             </div>
                         </div>
                     }
@@ -80,7 +81,7 @@
 
 
 
-    <div class="container body-content">
+    <div class="body-content">
         @RenderBody()
         <hr />
         @*<footer>
