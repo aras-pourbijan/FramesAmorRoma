@@ -150,9 +150,9 @@ namespace FramesAmorRoma.Controllers
                     portfolio.img9 = filename9;
                 }
 
-                User u = db.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
+                //User u = db.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
 
-                portfolio.IDuser = u.IDuser;
+                //portfolio.IDuser = u.IDuser;
                 db.portfolios.Add(portfolio);
                 db.SaveChanges();
                 return RedirectToAction("Index");

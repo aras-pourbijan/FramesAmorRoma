@@ -66,7 +66,10 @@ namespace FramesAmorRoma.Controllers
             ViewBag.IDuser = ThisUser.IDuser;
 
             portfolio Thisportfolio = db.portfolios.Where(p=>p.User.UserName == User.Identity.Name).FirstOrDefault();
+
             ViewBag.IDportfolio = Thisportfolio.IDportfolio;
+
+            
             return View();
         }
 
