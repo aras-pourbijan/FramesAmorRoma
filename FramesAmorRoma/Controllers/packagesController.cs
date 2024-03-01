@@ -18,7 +18,7 @@ namespace FramesAmorRoma.Controllers
         // GET: packages
         public ActionResult Index()
         {
-            return View(db.packages.ToList());
+            return View(db.Packages.ToList());
         }
 
         // GET: packages/Details/5
@@ -28,7 +28,7 @@ namespace FramesAmorRoma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            package package = db.packages.Find(id);
+            package package = db.Packages.Find(id);
             if (package == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace FramesAmorRoma.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.packages.Add(package);
+                db.Packages.Add(package);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace FramesAmorRoma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            package package = db.packages.Find(id);
+            package package = db.Packages.Find(id);
             if (package == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace FramesAmorRoma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            package package = db.packages.Find(id);
+            package package = db.Packages.Find(id);
             if (package == null)
             {
                 return HttpNotFound();
@@ -111,8 +111,8 @@ namespace FramesAmorRoma.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            package package = db.packages.Find(id);
-            db.packages.Remove(package);
+            package package = db.Packages.Find(id);
+            db.Packages.Remove(package);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

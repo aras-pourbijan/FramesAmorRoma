@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FramesAmorRoma.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Web;
 using System.Web.Mvc;
-using FramesAmorRoma.Models;
 namespace FramesAmorRoma.Controllers
 {
-    public class bookingsController : Controller
-        
+    public class BookingsController : Controller
+
     {
         private ModelDBcontext db = new ModelDBcontext();
 
@@ -19,7 +17,7 @@ namespace FramesAmorRoma.Controllers
         [Authorize(Users = "admin")]
         public ActionResult Index()
         {
-            var bookings = db.bookings.Include(b => b.package).Include(b => b.spot).Include(b => b.User);
+            var bookings = db.Bookings.Include(b => b.package).Include(b => b.spot).Include(b => b.User);
             return View(bookings.OrderByDescending(x => x.IDbook).ToList());
         }
 
@@ -30,7 +28,7 @@ namespace FramesAmorRoma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            booking booking = db.bookings.Find(id);
+            booking booking = db.Bookings.Find(id);
             if (booking == null)
             {
                 return HttpNotFound();
@@ -41,8 +39,8 @@ namespace FramesAmorRoma.Controllers
         // GET: bookings/Create
         public ActionResult Create()
         {
-            ViewBag.IDpackage = new SelectList(db.packages, "IDpackage", "PackageName");
-            ViewBag.IDspot = new SelectList(db.spots, "IDspot", "locationName");
+            ViewBag.IDpackage = new SelectList(db.Packages, "IDpackage", "PackageName");
+            ViewBag.IDspot = new SelectList(db.Spots, "IDspot", "locationName");
             ViewBag.IDuser = new SelectList(db.Users, "IDuser", "UserName");
             return View();
         }
@@ -56,15 +54,15 @@ namespace FramesAmorRoma.Controllers
         {
             if (ModelState.IsValid)
             {
-                booking.bookTime= DateTime.Now; 
+                booking.bookTime = DateTime.Now;
 
-                db.bookings.Add(booking);
+                db.Bookings.Add(booking);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDpackage = new SelectList(db.packages, "IDpackage", "PackageName", booking.IDpackage);
-            ViewBag.IDspot = new SelectList(db.spots, "IDspot", "locationName", booking.IDspot);
+            ViewBag.IDpackage = new SelectList(db.Packages, "IDpackage", "PackageName", booking.IDpackage);
+            ViewBag.IDspot = new SelectList(db.Spots, "IDspot", "locationName", booking.IDspot);
             ViewBag.IDuser = new SelectList(db.Users, "IDuser", "UserName", booking.IDuser);
             return View(booking);
         }
@@ -73,15 +71,15 @@ namespace FramesAmorRoma.Controllers
 
         public ActionResult CreateByID(int ID)
         {
-            ViewBag.IDpackage = new SelectList(db.packages, "IDpackage", "PackageName");
-            ViewBag.IDspot = new SelectList(db.spots, "IDspot", "locationName");
+            ViewBag.IDpackage = new SelectList(db.Packages, "IDpackage", "PackageName");
+            ViewBag.IDspot = new SelectList(db.Spots, "IDspot", "locationName");
             ViewBag.IDuser = new SelectList(db.Users, "IDuser", "UserName");
             return View();
         }
 
         [HttpPost]
 
-        public ActionResult CreateByID(booking booking,int ID)
+        public ActionResult CreateByID(booking booking, int ID)
         {
             if (ModelState.IsValid)
             {
@@ -89,10 +87,10 @@ namespace FramesAmorRoma.Controllers
                 booking.IDuser = ID;
                 booking.bookTime = DateTime.Now.Date;
 
-                db.bookings.Add(booking);
+                db.Bookings.Add(booking);
                 var User = db.Users.Find(ID);
-                var spot = db.spots.Find(booking.IDspot);
-                var package = db.packages.Find(booking.IDpackage);
+                var spot = db.Spots.Find(booking.IDspot);
+                var package = db.Packages.Find(booking.IDpackage);
                 db.SaveChanges();
 
                 MailAddress customer = new MailAddress(booking.clientEmail);
@@ -103,41 +101,41 @@ namespace FramesAmorRoma.Controllers
                 MailMessage mailMessage = new MailMessage();
                 mailMessage.Subject = "Your request for photoshoot with Photographer " + User.FirstName + " from Amor Frames";
                 mailMessage.Body = "Thank You for being our esteemed customer. Your support and trust in us are much cherished. \nThank You once again! \n---------------------------------------------\n" +
-                    "---------------------------------------------\n"+"Your Appointment With: "+User.FirstName+ " " + User.LastName + "\nTel: "+ User.tel+
-                    "\n---------------------------------------------\nBooking number: " + booking.IDbook + "\nBooking date: " + booking.daterequest.ToShortDateString() + "\nLocation: "+ spot.locationName+" - "+ spot.Locationaddress + "\nPrefert Hour: " + 
-                    booking.prefertHour.ToShortTimeString() + "\nPackage: " + package.PackageName + " - " + ((int)package.price)+ "" + "€ - included images: " + package.PicsIncluded +
+                    "---------------------------------------------\n" + "Your Appointment With: " + User.FirstName + " " + User.LastName + "\nTel: " + User.tel +
+                    "\n---------------------------------------------\nBooking number: " + booking.IDbook + "\nBooking date: " + booking.daterequest.ToShortDateString() + "\nLocation: " + spot.locationName + " - " + spot.Locationaddress + "\nPrefert Hour: " +
+                    booking.prefertHour.ToShortTimeString() + "\nPackage: " + package.PackageName + " - " + ((int)package.price) + "" + "€ - included images: " + package.PicsIncluded +
                     "\nCustomer Name: " + booking.clientName +
                     "\nCustomer Mail: " + booking.clientEmail +
-                    "\nCustomer contact number: " + booking.clientTel+
-                    "\n" +booking.NumOfPersons+" Perosn(s)" +
-                    "---------------------------------------------\n"+
+                    "\nCustomer contact number: " + booking.clientTel +
+                    "\n" + booking.NumOfPersons + " Perosn(s)" +
+                    "---------------------------------------------\n" +
                     "You Will Be Contacted Shortly by Photographer";
                 mailMessage.From = AdminMail;
                 mailMessage.To.Add(AdminMail);
                 mailMessage.To.Add(customer);
                 mailMessage.To.Add(Photographer);
 
-                SmtpClient client= new SmtpClient("out.virgilio.it");
+                SmtpClient client = new SmtpClient("out.virgilio.it");
                 client.Host = "out.virgilio.it";
                 client.Port = 587;
-                
+
                 client.Credentials = new NetworkCredential("framesamor@virgilio.it", "1234Admin@");
                 client.Send(mailMessage);
 
                 return RedirectToAction("BookDone");
             }
 
-            ViewBag.IDpackage = new SelectList(db.packages, "IDpackage", "PackageName", booking.IDpackage);
-            ViewBag.IDspot = new SelectList(db.spots, "IDspot", "locationName", booking.IDspot);
+            ViewBag.IDpackage = new SelectList(db.Packages, "IDpackage", "PackageName", booking.IDpackage);
+            ViewBag.IDspot = new SelectList(db.Spots, "IDspot", "locationName", booking.IDspot);
             ViewBag.IDuser = new SelectList(db.Users, "IDuser", "UserName", booking.IDuser);
             return View(booking);
         }
 
 
-        
+
         public ActionResult BookDone()
         {
-            
+
             return View();
         }
 
@@ -146,17 +144,17 @@ namespace FramesAmorRoma.Controllers
         // GET: bookings/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null) 
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            booking booking = db.bookings.Find(id);
+            booking booking = db.Bookings.Find(id);
             if (booking == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IDpackage = new SelectList(db.packages, "IDpackage", "PackageName", booking.IDpackage);
-            ViewBag.IDspot = new SelectList(db.spots, "IDspot", "locationName", booking.IDspot);
+            ViewBag.IDpackage = new SelectList(db.Packages, "IDpackage", "PackageName", booking.IDpackage);
+            ViewBag.IDspot = new SelectList(db.Spots, "IDspot", "locationName", booking.IDspot);
             ViewBag.IDuser = new SelectList(db.Users, "IDuser", "UserName", booking.IDuser);
             return View(booking);
         }
@@ -175,8 +173,8 @@ namespace FramesAmorRoma.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDpackage = new SelectList(db.packages, "IDpackage", "PackageName", booking.IDpackage);
-            ViewBag.IDspot = new SelectList(db.spots, "IDspot", "locationName", booking.IDspot);
+            ViewBag.IDpackage = new SelectList(db.Packages, "IDpackage", "PackageName", booking.IDpackage);
+            ViewBag.IDspot = new SelectList(db.Spots, "IDspot", "locationName", booking.IDspot);
             ViewBag.IDuser = new SelectList(db.Users, "IDuser", "UserName", booking.IDuser);
             return View(booking);
         }
@@ -189,7 +187,7 @@ namespace FramesAmorRoma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            booking booking = db.bookings.Find(id);
+            booking booking = db.Bookings.Find(id);
             if (booking == null)
             {
                 return HttpNotFound();
@@ -203,8 +201,8 @@ namespace FramesAmorRoma.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            booking booking = db.bookings.Find(id);
-            db.bookings.Remove(booking);
+            booking booking = db.Bookings.Find(id);
+            db.Bookings.Remove(booking);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

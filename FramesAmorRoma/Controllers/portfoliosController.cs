@@ -19,14 +19,14 @@ namespace FramesAmorRoma.Controllers
         // GET: portfolios
         public ActionResult Index()
         {
-            var portfolios = db.portfolios.Include(p => p.User);
+            var portfolios = db.Portfolios.Include(p => p.User);
             return View(portfolios.ToList());
         }
         [AllowAnonymous]
 
         public ActionResult PortfolioGallary()
         {
-            var portfolios = db.portfolios.Include(p => p.User);
+            var portfolios = db.Portfolios.Include(p => p.User);
             return View(portfolios.ToList());
         }
 
@@ -43,7 +43,7 @@ namespace FramesAmorRoma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            portfolio portfolio = db.portfolios.Find(id);
+            portfolio portfolio = db.Portfolios.Find(id);
             if (portfolio == null)
             {
                 return HttpNotFound();
@@ -153,7 +153,7 @@ namespace FramesAmorRoma.Controllers
                 //User u = db.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
 
                 //portfolio.IDuser = u.IDuser;
-                db.portfolios.Add(portfolio);
+                db.Portfolios.Add(portfolio);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -263,7 +263,7 @@ namespace FramesAmorRoma.Controllers
                 User u = db.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
 
                 portfolio.IDuser = u.IDuser;
-                db.portfolios.Add(portfolio);
+                db.Portfolios.Add(portfolio);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -282,7 +282,7 @@ namespace FramesAmorRoma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            portfolio portfolio = db.portfolios.Find(id);
+            portfolio portfolio = db.Portfolios.Find(id);
             if (portfolio == null)
             {
                 return HttpNotFound();
@@ -315,7 +315,7 @@ namespace FramesAmorRoma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            portfolio portfolio = db.portfolios.Find(id);
+            portfolio portfolio = db.Portfolios.Find(id);
             if (portfolio == null)
             {
                 return HttpNotFound();
@@ -328,8 +328,8 @@ namespace FramesAmorRoma.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            portfolio portfolio = db.portfolios.Find(id);
-            db.portfolios.Remove(portfolio);
+            portfolio portfolio = db.Portfolios.Find(id);
+            db.Portfolios.Remove(portfolio);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

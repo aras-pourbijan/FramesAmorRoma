@@ -8,14 +8,14 @@ namespace FramesAmorRoma.Models
     public partial class ModelDBcontext : DbContext
     {
         public ModelDBcontext()
-            : base("name=farDB")
+            : base("name=PhotographerDB")
         {
         }
 
-        public virtual DbSet<booking> bookings { get; set; }
-        public virtual DbSet<package> packages { get; set; }
-        public virtual DbSet<portfolio> portfolios { get; set; }
-        public virtual DbSet<spot> spots { get; set; }
+        public virtual DbSet<booking> Bookings { get; set; }
+        public virtual DbSet<package> Packages { get; set; }
+        public virtual DbSet<portfolio> Portfolios { get; set; }
+        public virtual DbSet<spot> Spots { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

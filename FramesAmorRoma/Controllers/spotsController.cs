@@ -18,7 +18,7 @@ namespace FramesAmorRoma.Controllers
         // GET: spots
         public ActionResult Index()
         {
-            return View(db.spots.ToList());
+            return View(db.Spots.ToList());
         }
 
         // GET: spots/Details/5
@@ -28,7 +28,7 @@ namespace FramesAmorRoma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            spot spot = db.spots.Find(id);
+            spot spot = db.Spots.Find(id);
             if (spot == null)
             {
                 return HttpNotFound();
@@ -73,7 +73,7 @@ namespace FramesAmorRoma.Controllers
 
 
 
-                db.spots.Add(spot);
+                db.Spots.Add(spot);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -88,7 +88,7 @@ namespace FramesAmorRoma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            spot spot = db.spots.Find(id);
+            spot spot = db.Spots.Find(id);
             if (spot == null)
             {
                 return HttpNotFound();
@@ -106,7 +106,7 @@ namespace FramesAmorRoma.Controllers
         {
             if (ModelState.IsValid)
             {
-                spot newSpot = db.spots.Find(spot.IDspot);
+                spot newSpot = db.Spots.Find(spot.IDspot);
                 if (spotJPG != null)
                 {
                     string filename = spotJPG.FileName;
@@ -115,7 +115,7 @@ namespace FramesAmorRoma.Controllers
                     spot.spotIMG= filename;
                 }
                 else
-                {   spot s = db.spots.Find(spot.IDspot);
+                {   spot s = db.Spots.Find(spot.IDspot);
                     spot.spotIMG = s.spotIMG;
                 }
 
@@ -128,7 +128,7 @@ namespace FramesAmorRoma.Controllers
                 }
                 else
                 {
-                    spot s1 = db.spots.Find(spot.IDspot);
+                    spot s1 = db.Spots.Find(spot.IDspot);
                     spot.spot1img = s1.spot1img;
                 }
 
@@ -141,7 +141,7 @@ namespace FramesAmorRoma.Controllers
                 }
                 else
                 {
-                    spot s2 = db.spots.Find(spot.IDspot);
+                    spot s2 = db.Spots.Find(spot.IDspot);
                     spot.spot2img = s2.spot2img;
                 }
 
@@ -154,7 +154,7 @@ namespace FramesAmorRoma.Controllers
                 }
                 else
                 {
-                    spot s3 = db.spots.Find(spot.IDspot);
+                    spot s3 = db.Spots.Find(spot.IDspot);
                     spot.spot3img = s3.spot3img;
                 }
 
@@ -181,7 +181,7 @@ namespace FramesAmorRoma.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            spot spot = db.spots.Find(id);
+            spot spot = db.Spots.Find(id);
             if (spot == null)
             {
                 return HttpNotFound();
@@ -194,8 +194,8 @@ namespace FramesAmorRoma.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            spot spot = db.spots.Find(id);
-            db.spots.Remove(spot);
+            spot spot = db.Spots.Find(id);
+            db.Spots.Remove(spot);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
